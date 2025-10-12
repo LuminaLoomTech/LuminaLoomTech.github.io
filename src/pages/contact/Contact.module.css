@@ -1,3 +1,12 @@
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .navbar {
+    font-size: 14px;
+  }
+}
+
 .spacer {
   display: flex;
   align-items: flex-start; /* 讓左右區塊頂部對齊 */
@@ -60,4 +69,37 @@ button:hover {
   box-sizing: border-box;
   background: rgba(255,255,255,0.1);
   color: #fff;
+}
+/* 手機版響應式 */
+/* 手機版樣式 */
+@media (max-width: 768px) {
+  .spacer {
+    flex-direction: column;      /* 左右區塊改上下排列 */
+    padding: 20px;               /* 調整內距 */
+    gap: 20px;                   /* 上下區塊間距 */
+  }
+
+  .info, .wrapper {
+    min-height: auto;            /* 讓區塊高度自適應 */
+    padding: 1rem;               /* 縮小內距 */
+  }
+
+  .title {
+    font-size: 24px;             /* 調整標題大小 */
+    text-align: center;
+  }
+
+  .button {
+    width: 100%;                 /* 按鈕全寬 */
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .field {
+    margin-bottom: 15px;         /* 表單欄位間距 */
+  }
+
+  .input, .textarea {
+    font-size: 14px;             /* 表單文字大小 */
+  }
 }

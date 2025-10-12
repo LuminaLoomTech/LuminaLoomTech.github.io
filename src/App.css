@@ -41,3 +41,30 @@
     transform: rotate(360deg);
   }
 }
+@media (max-width: 768px) {
+  .navbar {
+    display: none; /* 手機隱藏傳統 navbar */
+  }
+
+  .hamburger-btn {
+    display: block; /* 顯示漢堡按鈕 */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* 預設隱藏在左邊 */
+    width: 250px;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    left: 0; /* 打開時滑入畫面 */
+  }
+
+  .app-content {
+    margin-left: 0; /* 手機版不需要側邊欄寬度 */
+  }
+}
