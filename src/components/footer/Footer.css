@@ -1,0 +1,96 @@
+
+
+.footer {
+  left: 0;
+  height: var(--footer-height);
+  bottom: 0;
+  width: 100%;
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+  box-sizing: border-box; /* 讓 padding 納入高度 */
+  padding: 12px 20px var(--footer-inner-gap); /* 增加底部內距 */
+  z-index: 100; /* 低於側邊欄遮罩 */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.footer-section h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border-bottom: 8px solid #555;
+  padding-bottom: 8px;
+}
+
+.footer-section p {
+  margin: 8px 0;
+  color: #ccc;
+  line-height: 1;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: #555;
+  color: white;
+  border-color: #777;
+}
+
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  margin-bottom: 0; /* 由 --footer-inner-gap 控制總底部距離 */
+}
+
+.footer-bottom p {
+  color: #999;
+  margin: 0;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

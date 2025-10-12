@@ -1,0 +1,96 @@
+.container {
+  min-height: calc(100vh - var(--footer-height));
+  padding: 64px 10px;
+  margin: 0 auto;
+  max-width: 1100px;
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.quickStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 28px 0 20px;
+}
+
+.statCard {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.statLabel {
+  color: #aaa;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  background: rgba(255,255,255,0.02);
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cta {
+  margin: 48px 0 16px;
+  text-align: center;
+}
+
+.ctaButton {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--page-fg);
+  border: 1px solid #777;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: #999;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 48px 16px;
+  }
+}
+
+
+

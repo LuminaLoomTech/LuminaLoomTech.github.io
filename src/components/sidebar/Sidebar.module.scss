@@ -1,0 +1,128 @@
+$sidebar-width: 250px;
+$sidebar-bg-color: #333;
+$sidebar-text-color: white;
+$sidebar-hover-color: #444;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right:-$sidebar-width; /* 預設在螢幕外 */
+  width: $sidebar-width;
+  height: 100%;
+  background-color: $sidebar-bg-color;
+  color: $sidebar-text-color;
+  transition: left 0.4s ease; /* 滑動動畫 */
+  z-index: 1001; /* 在遮罩上方 */
+  padding-top: 70px;
+
+
+  &.open {
+    right: 0; /* 滑進來 */
+    }
+
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-item  {
+    a{
+      display: block;
+      padding: 12px 16px;
+      color: $sidebar-text-color;
+      text-decoration: none;
+      transition: background 0.2s;
+
+
+      &:hover {
+        background-color: #444;
+        }
+      }
+    }
+}
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+  opacity: 0;
+  pointer-events: none; /* 預設不能點 */
+  transition: opacity 0.3s ease;
+  z-index: 1000; /* 在 sidebar 下方 */
+
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto; /* 開啟時能點擊關閉 */
+  }
+}
+  
+/* 漢堡選單按鈕 - 永遠顯示在螢幕上 */
+.sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: $sidebar-bg-color;
+  border: none;
+  border-radius: 50%; /* 圓形 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $sidebar-hover-color;
+  }
+
+  /* 三條線 */
+  @mixin line-style {
+    width: 22px;
+    height: 2px;
+    background: $sidebar-text-color;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  span {
+    position: relative;
+    display: block;
+    @include line-style;
+
+    /* 上、下線 */
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      @include line-style;
+   
+    }
+
+    &::before {
+      top: -7px;
+    }
+    &::after {
+      top: 7px;
+    }
+  }
+
+  /* 打開狀態 → 變叉叉 sidebar-toggle */
+  &.open span {
+    background: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+    &::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+  }
+}

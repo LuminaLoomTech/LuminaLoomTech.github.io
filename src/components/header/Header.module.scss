@@ -1,0 +1,51 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;                       // 橫跨整個頁面
+  display: flex;
+  justify-content: flex-start;       // 從左邊開始排
+  align-items: center;               // 垂直置中
+  padding: 5px 20px;
+  background-color: var(--page-bg-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;                     // 保證在最上層
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;             // 移除超連結底線
+  color: #333;                       // 公司名稱文字顏色
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #51b3ff,
+    #3cffff,
+    #51b3ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: flow 3s linear infinite;
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
