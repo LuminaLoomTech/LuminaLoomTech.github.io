@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>{t('footer.socialMedia')}</h3>
           <div className="social-links">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LuminaLoomTech" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
           </div>
@@ -27,9 +27,9 @@ const Footer = () => {
         <div className="footer-section">
           <h3>{t('footer.quickLinks')}</h3>
           <div className="quick-links">
-            <a href="/">{t('footer.home')}</a>
-            <a href="/about">{t('footer.about')}</a>
-            <a href="/contact">{t('footer.contact')}</a>
+            <a href="#/">{t('footer.home')}</a>
+            <a href="#/about">{t('footer.about')}</a>
+            <a href="#/contact">{t('footer.contact')}</a>
           </div>
         </div>
       </div>
