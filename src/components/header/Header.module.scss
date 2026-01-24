@@ -7,9 +7,42 @@
   justify-content: flex-start;       // 從左邊開始排
   align-items: center;               // 垂直置中
   padding: 5px 20px;
-  background-color: var(--page-bg-color);
+  background-color: #181818;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;                     // 保證在最上層
+  z-index: 1000;                    // 保證在最上層
+  overflow: hidden;                 // 隐藏溢出的動畫
+}
+
+// 水波流動背景
+.waterBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(11, 169, 255, 0.3) 40%,
+    rgba(60, 255, 255, 0.6) 50%,
+    rgba(11, 169, 255, 0.7) 60%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: waterFlow 16s ease-in-out infinite;
+  pointer-events: none;  // 不影響點擊事件
+  z-index: -1;           // 在內容後方
+}
+
+@keyframes waterFlow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .logo {
@@ -48,4 +81,67 @@
   100% {
     background-position: 200% center;
   }
+}
+.navbar {
+  display: flex;
+  gap: 32px; /* 導覽項目間距 */
+  margin-left: auto;
+  margin-right: 40px;
+}
+.navbar a {
+  color: #86e5ff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar a:hover,
+.navbar a.active {
+  background: #0ba9ff;
+  color: #fff;
+}
+.language-switcher {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.language-select {
+  background: linear-gradient(135deg, rgba(11, 169, 255, 0.1), rgba(60, 255, 255, 0.1));
+  border: 1px solid #0ba9ff;
+  color: #86e5ff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 110px;
+  text-align: center;
+  
+  &:hover {
+    border-color: #ffffff;
+    background: linear-gradient(135deg, rgba(11, 169, 255, 0.2), rgba(60, 255, 255, 0.2));
+    box-shadow: 0 0 8px rgba(11, 169, 255, 0.3);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: #3cffff;
+    box-shadow: 0 0 12px rgba(60, 255, 255, 0.4);
+  }
+  
+  option {
+    background: #181818;
+    color: #1fc3dc;
+    padding: 8px;
+  }
+}
+.slogan {
+  font-size: 0.95rem;
+  color: #7ebcff;
+  margin-left: 16px;
+  font-style: Courier New;
+  letter-spacing: 0.5px;
 }

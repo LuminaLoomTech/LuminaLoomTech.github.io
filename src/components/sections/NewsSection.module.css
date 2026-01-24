@@ -1,0 +1,21 @@
+.newsSection {
+  padding: 20px;
+  background-color: #1e1e1e;
+  width: 100%;
+}
+.newsList {
+  list-style-type: none;
+  padding: 0;
+  color: rgb(107, 185, 240);
+}
+.sectionTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #70ecff;
+}
+
+.buttonContainer {
+
+  margin-top: 20px;
+  text-align: left;
+}

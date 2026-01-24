@@ -1,0 +1,93 @@
+/* 基礎樣式 - 所有按鈕共用 */
+.button {
+  padding: 10px 20px;
+  border: 2px solid #666; 
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-weight: 500;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 按下效果 - 所有按鈕共用 */
+.button:active:not(:disabled) {
+  transform: translateY(2px); /* 按下去整體下移 */
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4),    /* 左上陰影 */
+    inset -2px -2px 5px rgba(255, 255, 255, 0.1); /* 右下亮邊 */
+}
+
+/* Primary 變體 - 主要按鈕 */
+.primary {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.primary:hover:not(:disabled) {
+  background-color: #1184ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(2px) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 1) !important;
+}
+
+/* Secondary 變體 - 次要按鈕 */
+.secondary {
+  background-color: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: #545b62;
+  transform: translateY(-1px);
+}
+
+.secondary:active:not(:disabled) {
+  transform: translateY(2px) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Outline 變體 - 外框按鈕 */
+.outline {
+  background-color: transparent;
+ 
+
+.outline:active:not(:disabled) {
+  transform: translateY(2px) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7) !important;
+} color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.outline:hover:not(:disabled) {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-1px);
+}
+.puretext {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  padding: 10px 15px;
+}
+
+.puretext:hover:not(:disabled) {
+  background-color: rgba(0, 123, 255, 0.0);
+  transform: translateY(-1px);
+}
+
+.puretext:active:not(:disabled) {
+  transform: translateY(1px) !important;
+  background-color: rgba(0, 123, 255, 0.0) !important;
+  box-shadow: none !important;
+}

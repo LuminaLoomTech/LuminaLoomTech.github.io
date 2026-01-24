@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "首頁",
+    "about": "關於我們",
+    "services": "服務項目",
+    "contact": "聯絡我們",
+    "login": "登入"
+  },
+  "login": {
+    "title": "會員登入",
+    "emailPlaceholder": "請輸入電子郵件",
+    "passwordPlaceholder": "請輸入密碼",
+    "submit": "登入"
+  },
+  "header": {
+    "slogan": "Weaving Your Digital Future"
+  },
+  "home": {
+    "news": "公告與新聞",
+    "news1": "2025/12/19　全新官網上線！",
+    "news2": "2025/12/10　榮獲年度最佳創新獎",
+    "news3": "2025/11/28　產品A正式發表",
+    "showMore": "顯示更多",
+    "showLess": "收起",
+    "products": "產品專欄",
+    "product1": "智慧雲端管理系統",
+    "product1Desc": "協助企業高效管理資源，提升營運效率。",
+    "product2": "AI 數據分析平台",
+    "product2Desc": "即時洞察商業數據，驅動決策升級。",
+    "product3": "行動應用開發服務",
+    "product3Desc": "量身打造專屬 App，拓展行動商機。",
+    "bannerText1": "網頁設計",
+    "bannerText2": "軟體設計",
+    "bannerText3": "APP設計"
+  },
+  "about": {
+    "title": "關於我們",
+    "subtitle": "希織科技擁有兩大事業體",
+    "softwareDept": "軟體開發事業部",
+    "softwareDesc": "我們專注於開發流程自動化系統，協助企業將重複、耗時且容易出錯的作業流程，轉化為穩定且可追蹤的數位化系統，降低人工作業成本，提升整體營運效率。在許多組織企業中，作業流程往往依賴人工操作與個人經驗，隨著規模成長，問題也逐漸放大。我們透過深入了解實際作業流程，重新梳理各階段的資料流與決策節點，為客戶量身打造符合實務需求的自動化系統。在系統設計上，我們重視可擴充性與長期維護性，確保系統能隨著組織成長持續調整，而不必頻繁重構。同時，我們也強調流程透明化，讓管理者能即時掌握狀態、降低溝通成本，並提升整體決策效率。",
+    "gameDept": "數位遊戲事業部",
+    "products": "產品",
+    "product1": "妖精巫師的契約"
+  },
+  "services": {
+    "title": "服務項目",
+    "subtitle": "我們專注於軟體系統開發與流程自動化，協助企業建立穩定、可擴充的技術基礎。",
+    "service1": "系統客製化開發",
+    "service1Desc": "依企業需求量身打造內部管理系統、後台與 API 整合。",
+    "service2": "流程自動化",
+    "service2Desc": "將重複性作業自動化，提升效率並降低人為錯誤。",
+    "service3": "網站與前端開發",
+    "service3Desc": "企業形象網站、後台系統與互動式前端介面。",
+    "service4": "系統維護與優化",
+    "service4Desc": "既有系統效能優化、功能擴充與長期維護。",
+    "service5": "資料整合與分析",
+    "service5Desc": "整合多來源資料，建立報表與決策輔助系統。",
+    "service6": "技術顧問服務",
+    "service6Desc": "提供架構規劃、技術選型與開發流程建議。"
+  },
+  "contact": {
+    "title": "聯絡資訊",
+    "phone": "電話：0984108473 (盡量用email)",
+    "email": "Email：luminaloomtechbd@gmail.com",
+    "address": "地址：新北市新店區德正街17巷3號3樓",
+    "manager": "商業負責人:王先生",
+    "serviceHours": "服務時間:周一至周五9:00-18:00",
+    "software": "程式業務",
+    "softwareManager": "負責人:蘇先生",
+    "game": "遊戲業務",
+    "formTitle": "聯絡我們",
+    "name": "名字 / 公司：",
+    "namePlaceholder": "請輸入您的名字或公司",
+    "emailLabel": "Email：",
+    "emailPlaceholder": "請輸入您的 Email",
+    "message": "訊息：",
+    "messagePlaceholder": "請輸入您想對我們說的內容",
+    "phone2": "電話（選填）：",
+    "phonePlaceholder": "非必填",
+    "submit": "送出",
+    "submitting": "傳送中..."
+  },
+  "footer": {
+    "contactInfo": "聯絡資訊",
+    "email": "Email: Luminaloomtechbd@gmail.com",
+    "phone": "電話:0984108473",
+    "socialMedia": "社群媒體",
+    "quickLinks": "快速連結",
+    "home": "首頁",
+    "about": "關於",
+    "contact": "聯絡",
+    "copyright": "希織科技有限公司. 版權所有."
+  }
+}

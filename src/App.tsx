@@ -7,6 +7,11 @@ import Footer from './components/footer/Footer';
 import ContactForm from './pages/contact/Contact';
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import SplashScreen from "./components/splashscreen/Splashscreen";
+import Services from './pages/services/Services';
+import Header from './components/header/Header';
+import LoginPage from './pages/login/LoginPage';
+import { useTranslation } from 'react-i18next';
+import czLogo3 from './assets/images/CZ_LOGO3.png';
 
 function NotReady() {
   return (
@@ -17,26 +22,32 @@ function NotReady() {
 // 包一個 component 使用 useLocation
 function AppRoutes() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const menuItems = [
-    { label: "首頁", link: "/" },
-    { label: "關於", link: "/about" },
-    { label: "聯絡", link: "/contact" },
-    { label: "登入", link: "/login" }
+    { label: t('nav.home'), link: "/" },
+    { label: t('nav.about'), link: "/about" },
+    { label: t('nav.services'), link: "/services" },
+    { label: t('nav.contact'), link: "/contact" }
+    // { label: t('nav.login'), link: "/login" }  // 暫時隱藏登入選項
   ];
 
   return (
     <>
       {/* Sidebar 全站顯示 */}
+      <header>
+        <Header />
+      </header>
       <Sidebar item={menuItems} />
 
       {/* 主要內容容器，避免被固定 Footer 蓋住 */}
       <div className="app-content">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<NotReady />} />
           <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} /> {/* 新增這行 */}
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
 
@@ -48,7 +59,20 @@ function AppRoutes() {
 
 function App() {
   const [showSplash, setShowSplash] = React.useState(true);
-   return (
+
+  // 設定 favicon
+  React.useEffect(() => {
+    const link = document.querySelector("link[rel='icon']") as HTMLLinkElement;
+    if (link) {
+      link.href = czLogo3;
+    }
+    const appleLink = document.querySelector("link[rel='apple-touch-icon']") as HTMLLinkElement;
+    if (appleLink) {
+      appleLink.href = czLogo3;
+    }
+  }, []);
+
+  return (
     <HashRouter>
       {showSplash ? (
         <SplashScreen onFinish={() => setShowSplash(false)} />

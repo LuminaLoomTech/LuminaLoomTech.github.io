@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "login": {
+    "title": "Member Login",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Login"
+  },
+  "header": {
+    "slogan": "Weaving Your Digital Future"
+  },
+  "home": {
+    "news": "News & Announcements",
+    "news1": "2025/12/19　Brand New Official Website Launched!",
+    "news2": "2025/12/10　Awarded Best Innovation of the Year",
+    "news3": "2025/11/28　Product A Officially Released",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "products": "Product Column",
+    "product1": "Smart Cloud Management System",
+    "product1Desc": "Help enterprises manage resources efficiently and improve operational efficiency.",
+    "product2": "AI Data Analytics Platform",
+    "product2Desc": "Real-time business insights to drive strategic decisions.",
+    "product3": "Mobile Application Development Service",
+    "product3Desc": "Customized App solutions to expand mobile business opportunities.",
+    "bannerText1": "Web Design",
+    "bannerText2": "Software Design",
+    "bannerText3": "App Design"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Kiwashi Technology has two business divisions",
+    "softwareDept": "Software Development Division",
+    "softwareDesc": "We focus on developing process automation systems to help enterprises transform repetitive, time-consuming, and error-prone workflows into stable and traceable digital systems, reducing manual operation costs and improving overall operational efficiency. In many organizations, workflows often rely on manual operations and individual experience. As the scale grows, problems also expand. We gain a deep understanding of actual workflows, reorganize the data flow and decision points at each stage, and provide customized automation systems that meet practical needs. In system design, we emphasize scalability and long-term maintainability, ensuring systems can adjust as the organization grows without frequent reconstruction. At the same time, we emphasize process transparency, allowing managers to grasp status in real-time, reduce communication costs, and improve overall decision-making efficiency.",
+    "gameDept": "Digital Game Division",
+    "products": "Products",
+    "product1": "Fairy Wizard's Contract"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "We focus on software system development and process automation, helping enterprises establish a stable and scalable technical foundation.",
+    "service1": "Custom System Development",
+    "service1Desc": "Tailor-made internal management systems, backend and API integration based on enterprise needs.",
+    "service2": "Process Automation",
+    "service2Desc": "Automate repetitive tasks to improve efficiency and reduce human error.",
+    "service3": "Website and Frontend Development",
+    "service3Desc": "Corporate image websites, backend systems and interactive frontend interfaces.",
+    "service4": "System Maintenance and Optimization",
+    "service4Desc": "Existing system performance optimization, feature expansion and long-term maintenance.",
+    "service5": "Data Integration and Analytics",
+    "service5Desc": "Integrate multi-source data and build reports and decision support systems.",
+    "service6": "Technical Consulting Services",
+    "service6Desc": "Provide architecture planning, technology selection and development process recommendations."
+  },
+  "contact": {
+    "title": "Contact Information",
+    "phone": "Phone: 0984108473 (Prefer email)",
+    "email": "Email: luminaloomtechbd@gmail.com",
+    "address": "Address: 3F, No. 3, Lane 17, Dezheng Street, Xindian District, New Taipei City",
+    "manager": "Business Manager: Mr. Wang",
+    "serviceHours": "Service Hours: Monday to Friday 9:00-18:00",
+    "software": "Software Business",
+    "softwareManager": "Manager: Mr. Su",
+    "game": "Game Business",
+    "formTitle": "Contact Us",
+    "name": "Name / Company:",
+    "namePlaceholder": "Please enter your name or company",
+    "emailLabel": "Email:",
+    "emailPlaceholder": "Please enter your email",
+    "message": "Message:",
+    "messagePlaceholder": "Please enter what you would like to tell us",
+    "phone2": "Phone (Optional):",
+    "phonePlaceholder": "Not required",
+    "submit": "Submit",
+    "submitting": "Sending..."
+  },
+  "footer": {
+    "contactInfo": "Contact Information",
+    "email": "Email: Luminaloomtechbd@gmail.com",
+    "phone": "Phone: 0984108473",
+    "socialMedia": "Social Media",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "copyright": "LuminaLoomTech Ltd. All rights reserved."
+  }
+}

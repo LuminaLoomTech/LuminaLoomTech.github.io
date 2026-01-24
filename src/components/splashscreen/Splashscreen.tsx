@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../assets/images/logo1.png";
+import logo from "../../assets/images/CZ_LOGO3.png";
 
 type SplashscreenProps = {
   onFinish: () => void;
@@ -82,7 +82,7 @@ const SplashScreen: React.FC<SplashscreenProps> = ({ onFinish }) => {
             transition={{ duration: 0.5, delay: 0.15 }}
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color:"#4ab5abff" }}>
+            <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color:"#6eebdeff" }}>
               希織工作室
             </h1>
             <p style={{ 

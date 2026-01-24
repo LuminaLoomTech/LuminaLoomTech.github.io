@@ -19,8 +19,11 @@ const Sidebar = ({ item }: SidebarProps) => {
     <>
       {/* 漢堡按鈕 */}
       <motion.button
-        className={`${styles['sidebar-toggle']} ${isOpen ? styles.open : ''}`} // ✅ 用 styles
+        className={`${styles['sidebar-toggle']} ${isOpen ? styles.open : ''}`}
         {...fadeIn('down', 20, 0.5, 0.2)}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: window.innerHeight - 50 }}
+        dragElastic={0.2}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span></span> {/* 漢堡線 */}
