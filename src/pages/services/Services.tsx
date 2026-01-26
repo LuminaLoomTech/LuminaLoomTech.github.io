@@ -1,4 +1,3 @@
-import Header from "../../components/header/Header";
 import styles from './Services.module.css';
 import { useTranslation } from 'react-i18next';
 
@@ -46,7 +45,6 @@ export default function Services() {
 
   return (
     <section className={styles.services}>
-      <Header />
       {/* Hero */}
       <header className={styles.header}>
         <h1 className={styles.title}>{t('services.title')}</h1>

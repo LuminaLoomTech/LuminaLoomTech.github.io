@@ -2,10 +2,15 @@ import logo from '../../assets/images/CZ_LOGO3.png';
 import {Link} from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
-
+import sidebarStyles from '../sidebar/Sidebar.module.scss';
 import ParticleBackground from "./ParticleBackground";
 
-const Header = () => {
+interface HeaderProps {
+    onMenuClick?: () => void;
+    isSidebarOpen?: boolean;
+}
+
+const Header = ({ onMenuClick, isSidebarOpen }: HeaderProps) => {
     const { i18n, t } = useTranslation();
 
     const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -17,6 +22,14 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.waterBackground}></div>
+            {/* 漢堡選單按鈕 */}
+            <button 
+                className={`${sidebarStyles['sidebar-toggle']} ${isSidebarOpen ? sidebarStyles.open : ''}`}
+                onClick={onMenuClick}
+                type="button"
+            >
+                <span></span>
+            </button>
             <Link to="/" className={styles.logo}>
                 <img src={logo} className={styles['logo-img']} alt="公司Logo" />
                 <span className={styles['company-name']}>希織科技</span>

@@ -96,3 +96,104 @@
   z-index: 2;
   transition: height 400ms ease, padding-top 400ms ease;
 }
+
+/* ========== RWD 響應式設計 ========== */
+
+/* 平板尺寸 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .marqueeSection {
+    height: 75px;
+  }
+  
+  .marquee {
+    font-size: 1.7rem;
+    letter-spacing: 1.5px;
+  }
+  
+  .title {
+    font-size: 26px;
+    margin-top: 40px;
+  }
+  
+  .welcomeText {
+    font-size: 20px;
+  }
+  
+  .text {
+    font-size: 16px;
+  }
+  
+  .hero {
+    padding: 15px;
+  }
+}
+
+/* 手機尺寸 (< 768px) */
+@media (max-width: 768px) {
+  .marqueeSection {
+    height: 60px;
+  }
+  
+  .marquee {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  
+  .title {
+    font-size: 22px;
+    margin-top: 30px;
+    min-height: 2.5em;
+  }
+  
+  .welcomeText {
+    font-size: 18px;
+  }
+  
+  .text {
+    font-size: 15px;
+  }
+  
+  .hero {
+    padding: 10px;
+  }
+  
+  .welcomeWrapper {
+    height: 120px;
+    padding-top: 60px;
+  }
+}
+
+/* 極小螢幕 (< 480px) */
+@media (max-width: 480px) {
+  .marqueeSection {
+    height: 50px;
+  }
+  
+  .marquee {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .title {
+    font-size: 20px;
+    margin-top: 25px;
+    min-height: 2em;
+  }
+  
+  .welcomeText {
+    font-size: 16px;
+  }
+  
+  .text {
+    font-size: 14px;
+  }
+  
+  .hero {
+    padding: 10px 5px;
+  }
+  
+  .welcomeWrapper {
+    height: 100px;
+    padding-top: 55px;
+  }
+}

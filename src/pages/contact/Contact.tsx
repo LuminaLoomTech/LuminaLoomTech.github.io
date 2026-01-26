@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from './Contact.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn } from '@/utils/animations/motionPresets';
-import Header from "../../components/header/Header";
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 
@@ -85,8 +84,6 @@ export default function ContactForm() {
   };
 
   return (
-  <>
-    <Header />
     <motion.div className={styles.spacer} {...fadeIn('up', 20, 0.6, 0.1)}>
       <div className={styles.info}>
         <h2 className={styles.title}>{t('contact.title')}</h2>
@@ -163,6 +160,5 @@ export default function ContactForm() {
           </form>
         </div>
       </motion.div>
-    </>
   );
 }

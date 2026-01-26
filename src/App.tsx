@@ -23,6 +23,16 @@ function NotReady() {
 function AppRoutes() {
   const location = useLocation();
   const { t } = useTranslation();
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
+  // 當路由改變時自動關閉 Sidebar（暫時註釋測試）
+  // React.useEffect(() => {
+  //   setSidebarOpen(false);
+  // }, [location.pathname]);
+
+  const handleMenuClick = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   const menuItems = [
     { label: t('nav.home'), link: "/" },
@@ -36,12 +46,19 @@ function AppRoutes() {
     <>
       {/* Sidebar 全站顯示 */}
       <header>
-        <Header />
+        <Header 
+          onMenuClick={handleMenuClick}
+          isSidebarOpen={sidebarOpen}
+        />
       </header>
-      <Sidebar item={menuItems} />
+      <Sidebar 
+        item={menuItems} 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+      />
 
       {/* 主要內容容器，避免被固定 Footer 蓋住 */}
-      <div className="app-content">
+      <div className={`app-content ${sidebarOpen ? 'pushed' : ''}`}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

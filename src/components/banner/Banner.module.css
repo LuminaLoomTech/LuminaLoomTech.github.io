@@ -1,7 +1,5 @@
 .bannerSection {
-    width: 100vw;
-    min-width: 100vw;
-    max-width: 100vw;
+    width: 85vw;
     height: 600px;
     position: relative;
     overflow: hidden;
@@ -11,10 +9,9 @@
     background: #222;
     margin-top: 0;
     padding-top: 10px;
+    z-index: 10; /* 高於 Sidebar */
 }
 .bannerImg {
-  width: 100vw;
-  max-width: 100vw;
   height: 100%;
   max-height: 600px;
   object-fit: contain; /* 讓圖片完整顯示 */
@@ -32,6 +29,7 @@
     background: rgba(0,0,0,0.25);
     padding: 10px 32px;
     border-radius: 10px;
+    z-index: 12; /* 高於 Sidebar */
 }
 .bannerBtn {
   position: absolute;
@@ -45,7 +43,7 @@
   height: 44px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 2;
+  z-index: 12; /* 高於 Sidebar */
   transition: background 0.2s;
 }
 .bannerBtn:hover {
@@ -67,4 +65,95 @@
 
 .fadeOut {
   opacity: 0;
+}
+/* ========== RWD 響應式設計 ========== */
+
+/* 平板尺寸 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .bannerSection {
+    height: 450px;
+  }
+  
+  .bannerImg {
+    max-height: 450px;
+  }
+  
+  .bannerText {
+    font-size: 1.8rem;
+    left: 30px;
+    bottom: 24px;
+    padding: 8px 24px;
+  }
+  
+  .bannerBtn {
+    font-size: 1.8rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* 手機尺寸 (< 768px) */
+@media (max-width: 768px) {
+  .bannerSection {
+    height: 350px;
+    width: 100%;
+  }
+  
+  .bannerImg {
+    max-height: 350px;
+    object-fit: cover; /* 改為裁切以適應小螢幕 */
+  }
+  
+  .bannerText {
+    font-size: 1.4rem;
+    left: 20px;
+    bottom: 20px;
+    padding: 6px 18px;
+  }
+  
+  .bannerBtn {
+    font-size: 1.5rem;
+    width: 34px;
+    height: 34px;
+  }
+  
+  .bannerBtn:first-of-type {
+    left: 10px;
+  }
+  
+  .bannerBtn:last-of-type {
+    right: 10px;
+  }
+}
+
+/* 極小螢幕 (< 480px) */
+@media (max-width: 480px) {
+  .bannerSection {
+    height: 280px;
+  }
+  
+  .bannerImg {
+    max-height: 280px;
+  }
+  
+  .bannerText {
+    font-size: 1.1rem;
+    left: 15px;
+    bottom: 15px;
+    padding: 5px 14px;
+  }
+  
+  .bannerBtn {
+    font-size: 1.3rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .bannerBtn:first-of-type {
+    left: 8px;
+  }
+  
+  .bannerBtn:last-of-type {
+    right: 8px;
+  }
 }

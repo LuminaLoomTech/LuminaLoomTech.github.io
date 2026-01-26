@@ -9,7 +9,7 @@
   padding: 5px 20px;
   background-color: #181818;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;                    // 保證在最上層
+  z-index: 9999;                    // 超高層級，確保在最上方
   overflow: hidden;                 // 隐藏溢出的動畫
 }
 
@@ -33,7 +33,7 @@
   background-size: 200% 100%;
   animation: waterFlow 16s ease-in-out infinite;
   pointer-events: none;  // 不影響點擊事件
-  z-index: -1;           // 在內容後方
+  z-index: 1;           // 在按鈕後方
 }
 
 @keyframes waterFlow {
@@ -50,6 +50,8 @@
   align-items: center;
   text-decoration: none;             // 移除超連結底線
   color: #333;                       // 公司名稱文字顏色
+  position: relative;
+  z-index: 2;                        // 低於按鈕
 }
 
 .logo-img {
@@ -89,7 +91,7 @@
   margin-right: 40px;
 }
 .navbar a {
-  color: #86e5ff;
+  color: #bfe5f0;
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
@@ -144,4 +146,80 @@
   margin-left: 16px;
   font-style: Courier New;
   letter-spacing: 0.5px;
+}
+
+/* ========== RWD 響應式設計 ========== */
+
+/* 平板尺寸 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    padding: 5px 15px;
+  }
+  
+  .company-name {
+    font-size: 18px;
+  }
+  
+  .slogan {
+    font-size: 0.85rem;
+    margin-left: 12px;
+  }
+  
+  .navbar a {
+    padding: 8px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* 手機尺寸 (< 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 5px 10px;
+    justify-content: space-between;
+  }
+  
+  .logo-img {
+    height: 32px;
+  }
+  
+  .company-name {
+    font-size: 16px;
+  }
+  
+  .slogan {
+    display: none; /* 手機版隱藏 slogan */
+  }
+  
+  /* 手機版隱藏導覽列 */
+  .navbar {
+    display: none;
+  }
+  
+  .language-switcher {
+    margin-right: 0;
+  }
+  
+  .language-select {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    min-width: 90px;
+  }
+}
+
+/* 極小螢幕 (< 480px) */
+@media (max-width: 480px) {
+  .logo-img {
+    height: 28px;
+    margin-right: 6px;
+  }
+  
+  .company-name {
+    font-size: 14px;
+  }
+  
+  .language-select {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+    min-width: 80px;
+  }
 }

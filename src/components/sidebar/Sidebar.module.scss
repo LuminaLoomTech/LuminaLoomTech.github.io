@@ -1,19 +1,21 @@
 $sidebar-width: 250px;
-$sidebar-bg-color: #333;
+$sidebar-bg-color: rgba(51, 51, 51, 0.5); /* 半透明背景 */
 $sidebar-text-color: white;
-$sidebar-hover-color: #444;
+$sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
 
 .sidebar {
   position: fixed;
   top: 0;
-  right:0; 
+  left: 0; 
   width: $sidebar-width;
   height: 100%;
   background-color: $sidebar-bg-color;
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(10px); /* Safari 支援 */
   color: $sidebar-text-color;
-  transform: translateX(100%); /* 預設隱藏在畫面外（向右） */
+  transform: translateX(-100%); /* 預設隱藏在畫面外（向左） */
   transition: transform 0.8s cubic-bezier(.3,.7,.2,1); /* 調整速度與 easing */
-  z-index: 1001; /* 在遮罩上方 */
+  z-index: 5; /* 低於內容但高於背景 */
   padding-top: 70px;
 
 
@@ -33,13 +35,20 @@ $sidebar-hover-color: #444;
       color: $sidebar-text-color;
       text-decoration: none;
       transition: background 0.2s;
-
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); /* 手機點擊高亮 */
+      cursor: pointer;
 
       &:hover {
-        background-color: #444;
-        }
+        background-color: rgba(68, 68, 68, 0.9);
+      }
+      
+      /* 手機觸控按下效果 */
+      &:active {
+        background-color: rgba(100, 100, 100, 1);
+        transform: scale(0.98);
       }
     }
+  }
 }
 .sidebar-overlay {
   position: fixed;
@@ -51,7 +60,7 @@ $sidebar-hover-color: #444;
   opacity: 0;
   pointer-events: none; /* 預設不能點 */
   transition: opacity 0.3s ease;
-  z-index: 1000; /* 在 sidebar 下方 */
+  z-index: 0; /* 在最下方 */
 
 
   &.show {
@@ -60,11 +69,9 @@ $sidebar-hover-color: #444;
   }
 }
   
-/* 漢堡選單按鈕 - 永遠顯示在螢幕上 */
+/* 漢堡選單按鈕 - 在 Header 內部 */
 .sidebar-toggle {
-  position: fixed;
-  top: 10px;
-  right: 15px;
+  position: relative; /* 改為相對定位，在 Header 內 */
   width: 40px;
   height: 40px;
   background: $sidebar-bg-color;
@@ -74,9 +81,11 @@ $sidebar-hover-color: #444;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1002;
+  margin-right: 15px; /* 與 Logo 的間距 */
+  flex-shrink: 0; /* 不縮小 */
   box-shadow: 0 3px 6px rgba(0,0,0,0.25);
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 10000; /* 超高層級 */
 
   &:hover {
     background: $sidebar-hover-color;
@@ -125,5 +134,51 @@ $sidebar-hover-color: #444;
       transform: rotate(-45deg);
       top: 0;
     }
+  }
+}
+
+/* ========== RWD 響應式設計 ========== */
+
+/* 平板及以下尺寸 (< 1024px) - 調整 Sidebar 寬度 */
+@media (max-width: 1024px) {
+  $sidebar-width: 220px;
+  
+  .sidebar {
+    width: $sidebar-width;
+  }
+}
+
+/* 手機尺寸 (< 768px) - 縮小 Sidebar 寬度 */
+@media (max-width: 768px) {
+  $sidebar-width: 200px;
+  
+  .sidebar {
+    width: $sidebar-width;
+  }
+  
+  .sidebar-item a {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+/* 極小螢幕 (< 480px) - 最小寬度 */
+@media (max-width: 480px) {
+  $sidebar-width: 180px;
+  
+  .sidebar {
+    width: $sidebar-width;
+    padding-top: 60px;
+  }
+  
+  .sidebar-item a {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+  
+  .sidebar-toggle {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
   }
 }

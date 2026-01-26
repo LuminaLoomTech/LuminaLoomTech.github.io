@@ -2,15 +2,12 @@ import React from 'react';
 import styles from './About.module.css';
 import { fadeIn } from '@/utils/animations/motionPresets';
 import { motion } from 'framer-motion';
-import Header from "../../components/header/Header";
 import { useTranslation } from 'react-i18next';
 
 export default function AboutPage() {
   const { t } = useTranslation();
 
   return (
-    <>
-    <Header />
     <div className={styles.container}>
       <header className={styles.hero}>
         <motion.h1 className={styles.title} {...fadeIn('down', 20, 0.6, 0.1)}>{t('about.title')}</motion.h1>
@@ -46,10 +43,7 @@ export default function AboutPage() {
         </article>
       </motion.section>
     </div>
-  </>
   );
 }
-
-export {}
 
 

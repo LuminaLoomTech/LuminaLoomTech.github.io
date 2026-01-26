@@ -96,3 +96,123 @@
 .grid > div:nth-child(4) { animation-delay: 0.45s; }
 .grid > div:nth-child(5) { animation-delay: 0.6s; }
 .grid > div:nth-child(6) { animation-delay: 0.75s; }
+
+/* ========== RWD 響應式設計 ========== */
+
+/* 平板尺寸 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .services {
+    padding: 80px 20px;
+    max-width: 900px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .header h1 {
+    font-size: 36px;
+  }
+  
+  .header p {
+    font-size: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+}
+
+/* 手機尺寸 (< 768px) */
+@media (max-width: 768px) {
+  .services {
+    padding: 60px 16px;
+  }
+  
+  .title {
+    font-size: 28px;
+    margin-bottom: 36px;
+  }
+  
+  .header {
+    margin-bottom: 48px;
+  }
+  
+  .header h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  
+  .header p {
+    font-size: 15px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .icon {
+    font-size: 36px;
+    margin-bottom: 14px;
+  }
+  
+  .card h2 {
+    font-size: 18px;
+  }
+  
+  .card p {
+    font-size: 14px;
+  }
+}
+
+/* 極小螢幕 (< 480px) */
+@media (max-width: 480px) {
+  .services {
+    padding: 50px 12px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .header {
+    margin-bottom: 40px;
+  }
+  
+  .header h1 {
+    font-size: 26px;
+  }
+  
+  .header p {
+    font-size: 14px;
+  }
+  
+  .grid {
+    gap: 16px;
+  }
+  
+  .card {
+    padding: 18px;
+  }
+  
+  .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  
+  .card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 13px;
+  }
+}
