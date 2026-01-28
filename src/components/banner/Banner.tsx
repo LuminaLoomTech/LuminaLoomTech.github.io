@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import styles from './Banner.module.css';
 
@@ -31,25 +30,19 @@ export default function Banner({ banners }: BannerProps) {
         ‹
       </button>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={bannerIndex}
-          className={styles.bannerContent}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <img
-            src={banners[bannerIndex].img}
-            alt={banners[bannerIndex].alt}
-            className={styles.bannerImg}
-          />
-          <div className={styles.bannerText}>
-            {banners[bannerIndex].text}
-          </div>
-        </motion.div>
-      </AnimatePresence>
+      <div className={styles.bannerContent}>
+        <img
+          src={banners[bannerIndex].img}
+          alt={banners[bannerIndex].alt}
+          className={styles.bannerImg}
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
+        />
+        <div className={styles.bannerText}>
+          {banners[bannerIndex].text}
+        </div>
+      </div>
 
       <button
         className={styles.bannerBtn}

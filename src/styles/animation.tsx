@@ -249,18 +249,61 @@ export default function ParticleBackground({
   id = "tsparticles"
 }: ParticleBackgroundProps) {
   const [init, setInit] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // 檢測螢幕尺寸
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   if (!init) return null;
 
-  const options = customOptions || particlePresets[preset];
+  let options = customOptions || particlePresets[preset];
+  
+  // 手機版優化：減少粒子數量和限制
+  if (isMobile && !customOptions) {
+    const mobileOptions = JSON.parse(JSON.stringify(options)); // 深拷貝
+    
+    // 減少粒子數量至 40%
+    if (mobileOptions.particles?.number?.value) {
+      mobileOptions.particles.number.value = Math.floor(mobileOptions.particles.number.value * 0.4);
+    }
+    
+    // 限制最大粒子數
+    if (!mobileOptions.particles?.number?.limit) {
+      mobileOptions.particles.number.limit = {
+        mode: "delete" as const,
+        value: 25 // 手機最多 25 個粒子
+      };
+    } else {
+      mobileOptions.particles.number.limit.value = 25;
+    }
+    
+    // 限制點擊新增數量
+    if (mobileOptions.interactivity?.modes?.push) {
+      mobileOptions.interactivity.modes.push.quantity = 1; // 每次點擊只新增 1 個
+    }
+    
+    // 減少連線距離以提升性能
+    if (mobileOptions.particles?.links?.distance) {
+      mobileOptions.particles.links.distance *= 0.7;
+    }
+    
+    options = mobileOptions;
+  }
 
   return (
     <Particles

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Home.module.css';
 import Banner from '../../components/banner/Banner';
 import Intro from '../../components/intro/Intro';
@@ -11,12 +11,15 @@ import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   const { t } = useTranslation();
-  const [introActive, setIntroActive] = useState(true);
+  // 檢查是否已看過 Intro，初始值設為 false 以加快 LCP
+  const [introActive, setIntroActive] = useState(() => {
+    return !localStorage.getItem('introShown');
+  });
 
   const banners = [
     { img: czLogo3, alt: '廣告1', text: t('home.bannerText1') },
     { img: czLogo3, alt: '廣告2', text: t('home.bannerText2') },
-    { img: hime, alt: '廣告3', text: t('home.bannerText3') }
+    { img: czLogo3, alt: '廣告3', text: t('home.bannerText3') }
   ];
 
   return (
@@ -27,13 +30,7 @@ export default function Home() {
 
       {introActive && <Intro onFinish={() => setIntroActive(false)} />}
 
-      <div
-        style={{
-          transform: introActive ? 'translateY(80px)' : 'translateY(0)',
-          transition: 'transform 500ms ease',
-          zIndex: 1
-        }}
-      >
+      <div style={{ zIndex: 1 }}>
         <Banner banners={banners} />
       </div>
 

@@ -1,5 +1,5 @@
 $sidebar-width: 250px;
-$sidebar-bg-color: rgba(51, 51, 51, 0.5); /* 半透明背景 */
+$sidebar-bg-color: rgba(51, 51, 51, 0.3); /* 更透明的背景 */
 $sidebar-text-color: white;
 $sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
 
@@ -15,7 +15,7 @@ $sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
   color: $sidebar-text-color;
   transform: translateX(-100%); /* 預設隱藏在畫面外（向左） */
   transition: transform 0.8s cubic-bezier(.3,.7,.2,1); /* 調整速度與 easing */
-  z-index: 5; /* 低於內容但高於背景 */
+  z-index: 9998; /* 提升層級，覆蓋在頁面內容上 */
   padding-top: 70px;
 
 
@@ -75,8 +75,7 @@ $sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
   width: 40px;
   height: 40px;
   background: $sidebar-bg-color;
-  border: none;
-  border-radius: 50%; /* 圓形 */
+  border: none; 
   cursor: pointer;
   display: flex;
   align-items: center;

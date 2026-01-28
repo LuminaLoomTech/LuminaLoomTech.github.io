@@ -61,8 +61,9 @@
 
 /* 手機尺寸 (< 768px) */
 @media (max-width: 768px) {
+  /* 手機版不推擠頁面，sidebar 直接覆蓋 */
   .app-content.pushed {
-    margin-left: 200px;
+    margin-left: 0;
   }
   
   .navbar {
@@ -90,8 +91,9 @@
 
 /* 極小螢幕 (< 480px) */
 @media (max-width: 480px) {
+  /* 手機版不推擠頁面 */
   .app-content.pushed {
-    margin-left: 180px;
+    margin-left: 0;
   }
   
   .sidebar {
