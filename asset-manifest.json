@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.3b5e1362.css",
-    "main.js": "/static/js/main.c0623493.js",
+    "main.css": "/static/css/main.380f9138.css",
+    "main.js": "/static/js/main.d988676a.js",
     "static/js/453.ad7768ec.chunk.js": "/static/js/453.ad7768ec.chunk.js",
     "static/media/CZ_LOGO3.png": "/static/media/CZ_LOGO3.abda7948c5262d4ad682.png",
     "index.html": "/index.html",
-    "main.3b5e1362.css.map": "/static/css/main.3b5e1362.css.map",
-    "main.c0623493.js.map": "/static/js/main.c0623493.js.map",
+    "main.380f9138.css.map": "/static/css/main.380f9138.css.map",
+    "main.d988676a.js.map": "/static/js/main.d988676a.js.map",
     "453.ad7768ec.chunk.js.map": "/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b5e1362.css",
-    "static/js/main.c0623493.js"
+    "static/css/main.380f9138.css",
+    "static/js/main.d988676a.js"
   ]
 }
