@@ -6,7 +6,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #222;
     margin-top: 0;
     padding-top: 10px;
     z-index: 10; /* 高於 Sidebar */
@@ -16,7 +15,6 @@
   max-height: 600px;
   object-fit: contain; /* 讓圖片完整顯示 */
   display: block;
-  background: #222;
 }
 .bannerText {
     position: absolute;
