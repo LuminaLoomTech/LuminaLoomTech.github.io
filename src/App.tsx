@@ -62,7 +62,7 @@ function AppRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} /> {/* 新增這行 */}
+          <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>

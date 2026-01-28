@@ -7,11 +7,17 @@ export default function NewsSection() {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
 
-  const allNews = [
-    t('home.news1'),
-    t('home.news2'),
-    t('home.news3'),
-  ];
+  // 動態讀取所有 news
+  const allNews = [];
+  let index = 1;
+  while (true) {
+    const newsKey = `home.news${index}`;
+    const newsContent = t(newsKey);
+    // 如果翻譯結果等於 key 本身，表示該 news 不存在
+    if (newsContent === newsKey) break;
+    allNews.push(newsContent);
+    index++;
+  }
 
   const displayedNews = showAll ? allNews : allNews.slice(0, 1);
 

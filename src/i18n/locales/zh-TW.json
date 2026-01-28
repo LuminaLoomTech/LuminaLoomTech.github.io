@@ -17,9 +17,6 @@
   },
   "home": {
     "news": "公告與新聞",
-    "news1": "2025/12/19　全新官網上線！",
-    "news2": "2025/12/10　榮獲年度最佳創新獎",
-    "news3": "2025/11/28　產品A正式發表",
     "showMore": "顯示更多",
     "showLess": "收起",
     "products": "產品專欄",
@@ -31,7 +28,8 @@
     "product3Desc": "量身打造專屬 App，拓展行動商機。",
     "bannerText1": "網頁設計",
     "bannerText2": "軟體設計",
-    "bannerText3": "APP設計"
+    "bannerText3": "APP設計",
+    "news1": "2026/01/28 全新官網測試"
   },
   "about": {
     "title": "關於我們",
