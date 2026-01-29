@@ -83,7 +83,7 @@ const SplashScreen: React.FC<SplashscreenProps> = ({ onFinish }) => {
             style={{ display: "flex", flexDirection: "column" }}
           >
             <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color:"#6eebdeff" }}>
-              希織工作室
+              希織科技
             </h1>
             <p style={{ 
               margin: "6px 0 0", 
@@ -91,7 +91,7 @@ const SplashScreen: React.FC<SplashscreenProps> = ({ onFinish }) => {
               opacity: 0.9,
               color:"#59dbffff",
                }}>
-              提供創新高效的軟體解決方案
+              編織希望，創造科技
             </p>
           </motion.div>
         </motion.div>

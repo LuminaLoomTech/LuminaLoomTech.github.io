@@ -17,9 +17,6 @@
   },
   "home": {
     "news": "News & Announcements",
-    "news1": "2025/12/19　Brand New Official Website Launched!",
-    "news2": "2025/12/10　Awarded Best Innovation of the Year",
-    "news3": "2025/11/28　Product A Officially Released",
     "showMore": "Show More",
     "showLess": "Show Less",
     "products": "Product Column",
@@ -31,7 +28,8 @@
     "product3Desc": "Customized App solutions to expand mobile business opportunities.",
     "bannerText1": "Web Design",
     "bannerText2": "Software Design",
-    "bannerText3": "App Design"
+    "bannerText3": "App Design",
+    "news1": "2026/01/29 Test Management System"
   },
   "about": {
     "title": "About Us",
