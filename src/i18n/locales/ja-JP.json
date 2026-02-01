@@ -26,10 +26,16 @@
     "product2Desc": "ビジネスデータをリアルタイムで洞察し、意思決定をアップグレード。",
     "product3": "モバイルアプリ開発サービス",
     "product3Desc": "オーダーメイドの専用アプリを開発し、モバイルビジネスチャンスを拡大。",
-    "bannerText1": "ウェブデザイン",
-    "bannerText2": "ソフトウェア設計",
-    "bannerText3": "アプリ設計",
-    "news1": "2026/01/29 試験管理システム"
+    "bannerBackground": "BANNER.png",
+    "banner1Text": "ウェブデザイン",
+    "banner1Image": "CZ_LOGO3.png",
+    "banner2Text": "ソフトウェア設計",
+    "banner2Image": "CZ_LOGO3.png",
+    "banner3Text": "アプリ設計",
+    "banner3Image": "CZ_LOGO3.png",
+    "news1": "2026/01/29 試験管理システム",
+    "banner4Text": "ゲームデザイン",
+    "banner4Image": "CZ_LOGO3-optimized.png"
   },
   "about": {
     "title": "会社概要",

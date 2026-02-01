@@ -82,16 +82,17 @@ const SplashScreen: React.FC<SplashscreenProps> = ({ onFinish }) => {
             transition={{ duration: 0.5, delay: 0.15 }}
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color:"#6eebdeff" }}>
+            <h1 style={{ margin: 0, fontSize: 30, fontWeight: 700, color:"#6eebdeff" }}>
               希織科技
             </h1>
             <p style={{ 
               margin: "6px 0 0", 
-              fontSize: 20, 
-              opacity: 0.9,
+              fontSize: 25, 
+              fontWeight: 600,
+              opacity: 0.95,
               color:"#59dbffff",
                }}>
-              編織希望，創造科技
+              編織希望，共創科技
             </p>
           </motion.div>
         </motion.div>

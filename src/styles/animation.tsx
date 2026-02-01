@@ -168,8 +168,7 @@ export const particlePresets = {
           mode: "grab"
         },
         onClick: { 
-          enable: true,
-          mode: "push"
+          enable: false
         }
       },
       modes: {
@@ -178,9 +177,6 @@ export const particlePresets = {
           links: {
             opacity: 1
           }
-        },
-        push: {
-          quantity: 2
         }
       }
     }
@@ -217,8 +213,7 @@ export const particlePresets = {
           mode: "grab"
         },
         onClick: { 
-          enable: true,
-          mode: "push"
+          enable: false
         }
       },
       modes: {
@@ -227,9 +222,6 @@ export const particlePresets = {
           links: {
             opacity: 1
           }
-        },
-        push: {
-          quantity: 2
         }
       }
     }

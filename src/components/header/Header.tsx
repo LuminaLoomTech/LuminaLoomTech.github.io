@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
 import sidebarStyles from '../sidebar/Sidebar.module.scss';
-import ParticleBackground from "./ParticleBackground";
 
 interface HeaderProps {
     onMenuClick?: () => void;

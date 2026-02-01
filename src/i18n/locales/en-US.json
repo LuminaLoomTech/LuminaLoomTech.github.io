@@ -26,10 +26,16 @@
     "product2Desc": "Real-time business insights to drive strategic decisions.",
     "product3": "Mobile Application Development Service",
     "product3Desc": "Customized App solutions to expand mobile business opportunities.",
-    "bannerText1": "Web Design",
-    "bannerText2": "Software Design",
-    "bannerText3": "App Design",
-    "news1": "2026/01/29 Test Management System"
+    "bannerBackground": "BANNER.png",
+    "banner1Text": "Web Design",
+    "banner1Image": "CZ_LOGO3.png",
+    "banner2Text": "Software Design",
+    "banner2Image": "CZ_LOGO3.png",
+    "banner3Text": "App Design",
+    "banner3Image": "CZ_LOGO3.png",
+    "news1": "2026/01/29 Test Management System",
+    "banner4Text": "game design",
+    "banner4Image": "CZ_LOGO3-optimized.png"
   },
   "about": {
     "title": "About Us",
