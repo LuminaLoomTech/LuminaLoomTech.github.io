@@ -13,13 +13,21 @@ interface BannerProps {
 
 export default function Banner({ banners, backgroundImage }: BannerProps) {
   const [bannerIndex, setBannerIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
   useEffect(() => {
+    if (!autoPlay) return; // 如果停止自動播放，不啟動計時器
+    
     const timer = setInterval(() => {
       setBannerIndex((prev) => (prev + 1) % banners.length);
     }, 5500);
     return () => clearInterval(timer);
-  }, [banners.length]);
+  }, [banners.length, autoPlay]);
+
+  const handleManualChange = (newIndex: number) => {
+    setBannerIndex(newIndex);
+    setAutoPlay(false); // 停止自動播放
+  };
 
   return (
     <section className={styles.bannerSection}>
@@ -33,7 +41,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
       <button
         className={styles.bannerBtn}
         onClick={() => {
-          setBannerIndex((prev) => (prev - 1 + banners.length) % banners.length);
+          handleManualChange((bannerIndex - 1 + banners.length) % banners.length);
         }}
       >
         <svg width="0" height="0" style={{ position: 'absolute' }}>
@@ -85,7 +93,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
       <button
         className={styles.bannerBtn}
         onClick={() => {
-          setBannerIndex((prev) => (prev + 1) % banners.length);
+          handleManualChange((bannerIndex + 1) % banners.length);
         }}
       >
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -116,7 +124,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
           <button
             key={index}
             className={`${styles.indicator} ${index === bannerIndex ? styles.indicatorActive : ''}`}
-            onClick={() => setBannerIndex(index)}
+            onClick={() => handleManualChange(index)}
             aria-label={`前往 banner ${index + 1}`}
           />
         ))}

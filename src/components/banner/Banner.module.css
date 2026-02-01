@@ -24,6 +24,17 @@
     background-repeat: no-repeat;
     z-index: 1; /* 在內容之下 */
     pointer-events: none;
+    opacity: 0;
+    animation: fadeInBackground 1s ease-in-out forwards;
+}
+
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* 確保內容不會溢出 */
