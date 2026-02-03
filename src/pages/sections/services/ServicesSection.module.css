@@ -1,0 +1,132 @@
+/* Services Section */
+.servicesSection {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: #f8f9fa;
+}
+
+.servicesHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.servicesTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.servicesHeader p {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.serviceCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  min-width: 0;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.serviceCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.serviceCard p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .servicesTitle {
+    font-size: 2rem;
+  }
+
+  .servicesHeader p {
+    font-size: 1rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .serviceCard {
+    padding: 30px 20px;
+  }
+
+  .serviceCard h3 {
+    font-size: 1.25rem;
+  }
+
+  .serviceCard p {
+    font-size: 0.95rem;
+  }
+
+  .servicesSection {
+    padding: 60px 15px;
+  }
+}
+
+/* 小螢幕優化 (iPhone SE 等) */
+@media (max-width: 480px) {
+  .servicesSection {
+    padding: 40px 10px;
+  }
+
+  .servicesHeader {
+    margin-bottom: 40px;
+  }
+
+  .servicesTitle {
+    font-size: 1.75rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  .serviceCard {
+    padding: 25px 15px;
+  }
+
+  .serviceIcon {
+    font-size: 2.5rem;
+  }
+
+  .serviceCard h3 {
+    font-size: 1.15rem;
+  }
+
+  .serviceCard p {
+    font-size: 0.9rem;
+  }
+}

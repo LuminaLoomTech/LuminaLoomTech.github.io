@@ -1,14 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
-  item: { label: string; link: string }[];
+  item: { label: string; link: string; onClick?: () => void }[];
   isOpen: boolean;
   onClose: () => void;
 }
 
 const Sidebar = ({ item, isOpen, onClose }: SidebarProps) => {
+  const handleClick = (onClick?: () => void) => {
+    if (onClick) {
+      onClick();
+    }
+    onClose();
+  };
+
   return (
     <>
       {/* 遮罩 */}
@@ -25,9 +31,19 @@ const Sidebar = ({ item, isOpen, onClose }: SidebarProps) => {
           <div className={styles['sidebar-content']}>
             {item.map((menu) => (
               <div key={`${menu.label}-${menu.link}`} className={styles['sidebar-item']}>
-                <Link to={menu.link} onClick={onClose}>
+                <a 
+                  href={menu.link} 
+                  onClick={(e) => {
+                    if (menu.onClick) {
+                      e.preventDefault();
+                      handleClick(menu.onClick);
+                    } else {
+                      onClose();
+                    }
+                  }}
+                >
                   {menu.label}
-                </Link>
+                </a>
               </div>
             ))}
           </div>

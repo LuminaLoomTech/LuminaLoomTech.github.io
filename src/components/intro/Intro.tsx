@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from '../../pages/home/Home.module.css';
+import styles from '../../pages/sections/home/HomeSection.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeNormal, fadeLast } from '../../utils/animations/motionPresets';
 import texts from './introTexts';

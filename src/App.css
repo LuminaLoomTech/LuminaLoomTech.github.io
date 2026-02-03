@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .app-content {
   padding-top: 60px; /* Header 高度，避免內容被遮擋 */
   padding-bottom: var(--footer-height); /* 須大於等於 Footer 的總高度 */

@@ -137,13 +137,13 @@ export const particlePresets = {
   interactive: {
     particles: {
       number: { 
-        value: 30,
+        value: 40,
         limit: {
           mode: "delete" as const,
           value: 50
         }
       },
-      color: { value: "#5ecfff" },
+      color: { value: "#aee7ff" },
       opacity: {
         value: 0
       },
@@ -151,15 +151,16 @@ export const particlePresets = {
         enable: true, 
         color: "#5ecfff",
         distance: 200,
-        opacity: 0.6,
+        opacity: 0.5,
         frequency: 0.5,
-        warp: false
+        warp: false,
+        width: 2
       },
       move: { 
         enable: true, 
-        speed: 0.8,
+        speed: 1.2,
       },
-      size: { value: 3 }
+      size: { value: 4 }
     },
     interactivity: {
       events: {

@@ -14,6 +14,8 @@ interface BannerProps {
 export default function Banner({ banners, backgroundImage }: BannerProps) {
   const [bannerIndex, setBannerIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     if (!autoPlay) return; // 如果停止自動播放，不啟動計時器
@@ -27,6 +29,36 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
   const handleManualChange = (newIndex: number) => {
     setBannerIndex(newIndex);
     setAutoPlay(false); // 停止自動播放
+  };
+
+  // 觸控滑動處理
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 50; // 最小滑動距離
+
+    if (Math.abs(distance) < minSwipeDistance) return;
+
+    if (distance > 0) {
+      // 向左滑，下一張
+      handleManualChange((bannerIndex + 1) % banners.length);
+    } else {
+      // 向右滑，上一張
+      handleManualChange((bannerIndex - 1 + banners.length) % banners.length);
+    }
+
+    // 重置
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   return (
@@ -76,7 +108,12 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
         </div>
       </button>
 
-      <div className={styles.bannerContent}>
+      <div 
+        className={styles.bannerContent}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <img
           src={banners[bannerIndex].img}
           alt={banners[bannerIndex].alt}

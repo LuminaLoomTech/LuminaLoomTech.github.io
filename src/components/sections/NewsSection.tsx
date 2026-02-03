@@ -1,11 +1,11 @@
 import styles from './NewsSection.module.css';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 
 export default function NewsSection() {
   const { t } = useTranslation();
-  const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
 
   // 動態讀取所有 news
   const allNews = [];
@@ -19,7 +19,8 @@ export default function NewsSection() {
     index++;
   }
 
-  const displayedNews = showAll ? allNews : allNews.slice(0, 1);
+  const displayedNews = allNews.slice(0, 5);
+  const hasMoreNews = allNews.length > 5;
 
   return (
     <section className={styles.newsSection}>
@@ -29,15 +30,20 @@ export default function NewsSection() {
           <li key={index}>{news}</li>
         ))}
       </ul>
-      <div className={styles.buttonContainer}>
-        <Button 
-          type="button"
-          variant="puretext"
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? t('home.showLess') : t('home.showMore')}
-        </Button>
-      </div>
+      {hasMoreNews && (
+        <div className={styles.buttonContainer}>
+          <Button 
+            type="button"
+            variant="puretext"
+            onClick={() => {
+              navigate('/news');
+              setTimeout(() => window.scrollTo(0, 0), 100);
+            }}
+          >
+            {t('home.viewAllNews') || '查看全部新聞'}
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

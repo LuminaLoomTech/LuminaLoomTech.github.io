@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react';
-import styles from './Home.module.css';
-import Banner from '../../components/banner/Banner';
-import Intro from '../../components/intro/Intro';
-import NewsSection from '../../components/sections/NewsSection';
-import ParticleBackground from '../../styles/animation';
-
+import { useState } from 'react';
+import styles from './HomeSection.module.css';
+import Banner from '../../../components/banner/Banner';
+import Intro from '../../../components/intro/Intro';
+import NewsSection from '../../../components/sections/NewsSection';
+import ParticleBackground from '../../../styles/animation';
 import { useTranslation } from 'react-i18next';
 
-export default function Home() {
+export default function HomeSection() {
   const { t, i18n } = useTranslation();
-  // 檢查是否已看過 Intro，初始值設為 false 以加快 LCP
+  
   const [introActive, setIntroActive] = useState(() => {
     return !localStorage.getItem('introShown');
   });
@@ -23,9 +22,8 @@ export default function Home() {
       const text = t(`home.banner${index}Text`);
       const imageName = t(`home.banner${index}Image`);
       
-      // 動態載入圖片
       try {
-        const image = require(`../../assets/images/${imageName}`);
+        const image = require(`../../../assets/images/${imageName}`);
         banners.push({
           img: image,
           alt: `廣告${index}`,
@@ -43,12 +41,11 @@ export default function Home() {
 
   const banners = getBanners();
 
-  // 讀取背景圖片
   const getBackgroundImage = () => {
     if (i18n.exists('home.bannerBackground')) {
       const imageName = t('home.bannerBackground');
       try {
-        return require(`../../assets/images/${imageName}`);
+        return require(`../../../assets/images/${imageName}`);
       } catch (error) {
         console.warn(`背景圖片載入失敗: ${imageName}`);
         return undefined;
@@ -60,18 +57,15 @@ export default function Home() {
   const backgroundImage = getBackgroundImage();
 
   return (
-    <div className={styles.container}>
+    <section id="home" className={styles.homeSection}>
       <div className={styles.particleContainer}>
         <ParticleBackground preset='interactive'/>
       </div>
-
       {introActive && <Intro onFinish={() => setIntroActive(false)} />}
-
       <div style={{ zIndex: 1 }}>
         <Banner banners={banners} backgroundImage={backgroundImage} />
       </div>
-
       <NewsSection />
-    </div>
+    </section>
   );
 }

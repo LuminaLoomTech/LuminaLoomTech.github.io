@@ -1,4 +1,4 @@
-:root { --footer-height: 260px; --footer-inner-gap: 10px; --page-bg: #161616; --page-fg: #ffffff; }
+:root { --footer-height: 260px; --footer-inner-gap: 10px; --page-bg: #0d1117; --page-fg: #ffffff; }
 
 @media (max-width: 768px) {
   :root { --footer-height: 200px; --footer-inner-gap: 16px; }

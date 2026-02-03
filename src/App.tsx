@@ -1,46 +1,62 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/home/Home';
-import About from './pages/about/AboutPage';
+import MainPage from './pages/MainPage';
+import NewsPage from './pages/news/NewsPage';
 import Sidebar from './components/sidebar/Sidebar';
 import Footer from './components/footer/Footer';
-import ContactForm from './pages/contact/Contact';
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import SplashScreen from "./components/splashscreen/Splashscreen";
-import Services from './pages/services/Services';
 import Header from './components/header/Header';
 import LoginPage from './pages/login/LoginPage';
 import { useTranslation } from 'react-i18next';
 import czLogo3 from './assets/images/CZ_LOGO3.png';
 
-function NotReady() {
-  return (
-    <h1>此頁面尚未完成，敬請期待！</h1>
-  );
-}
-
 // 包一個 component 使用 useLocation
 function AppRoutes() {
-  const location = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-
-  // 當路由改變時自動關閉 Sidebar（暫時註釋測試）
-  // React.useEffect(() => {
-  //   setSidebarOpen(false);
-  // }, [location.pathname]);
+  const [showLogin, setShowLogin] = React.useState(false);
 
   const handleMenuClick = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    // 如果不在主頁，先導航到主頁
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    setSidebarOpen(false);
+  };
+
   const menuItems = [
-    { label: t('nav.home'), link: "/" },
-    { label: t('nav.about'), link: "/about" },
-    { label: t('nav.services'), link: "/services" },
-    { label: t('nav.contact'), link: "/contact" }
-    // { label: t('nav.login'), link: "/login" }  // 暫時隱藏登入選項
+    { label: t('nav.home'), link: "#home", onClick: () => scrollToSection('home') },
+    { label: t('nav.about'), link: "#about", onClick: () => scrollToSection('about') },
+    { label: t('nav.services'), link: "#services", onClick: () => scrollToSection('services') },
+    { label: t('nav.news'), link: "#/news", onClick: () => {
+      navigate('/news');
+      setTimeout(() => window.scrollTo(0, 0), 100);
+      setSidebarOpen(false);
+    }},
+    { label: t('nav.contact'), link: "#contact", onClick: () => scrollToSection('contact') }
   ];
+
+  if (showLogin) {
+    return <LoginPage />;
+  }
 
   return (
     <>
@@ -57,14 +73,11 @@ function AppRoutes() {
         onClose={() => setSidebarOpen(false)} 
       />
 
-      {/* 主要內容容器，避免被固定 Footer 蓋住 */}
+      {/* 主要內容容器 */}
       <div className={`app-content ${sidebarOpen ? 'pushed' : ''}`}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<ContactForm />} />
-          <Route path="/login" element={<LoginPage />} />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/news" element={<NewsPage />} />
         </Routes>
       </div>
 
