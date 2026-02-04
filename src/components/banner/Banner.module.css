@@ -9,6 +9,7 @@
     margin: 0 auto; /* 居中 */
     padding-top: 10px;
     z-index: 10; /* 高於 Sidebar */
+    background: transparent; /* 確保沒有底色 */
 }
 
 /* 全頁面寬度背景層 */
@@ -384,5 +385,65 @@
       0 0 40px rgba(30, 120, 255, 0.6),
       inset 0 1px 2px rgba(255, 255, 255, 0.3),
       inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+  }
+}/* 有圖片的狀態 */
+.bannerContent.hasImage {
+  background: transparent;
+}
+
+/* 沒有圖片的狀態 */
+.bannerContent.noImage {
+  background: transparent; /* 移除底色 */
+  min-height: 300px;
+}
+
+.bannerContent.noImage .bannerText {
+  /* 維持原本的左下角定位 */
+  position: absolute;
+  bottom: 32px;
+  left: 40px;
+  transform: none;
+  text-align: left;
+  font-size: 2.2rem;
+  background: rgba(0,0,0,0.25); /* 恢復文字背景 */
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 1024px) {
+  .bannerContent.noImage {
+    min-height: 250px;
+  }
+
+  .bannerContent.noImage .bannerText {
+    font-size: 1.8rem;
+    left: 30px;
+    bottom: 24px;
+    padding: 8px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerContent.noImage {
+    min-height: 200px;
+  }
+
+  .bannerContent.noImage .bannerText {
+    font-size: 1.4rem;
+    left: 20px;
+    bottom: 20px;
+    padding: 6px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerContent.noImage {
+    min-height: 150px;
+  }
+
+  .bannerContent.noImage .bannerText {
+    font-size: 1.1rem;
+    left: 15px;
+    bottom: 15px;
+    padding: 5px 14px;
   }
 }

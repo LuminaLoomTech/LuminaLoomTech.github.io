@@ -19,6 +19,51 @@ function AppRoutes() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const [showLogin, setShowLogin] = React.useState(false);
 
+  // 當路由變化時處理 hash 滾動
+  React.useEffect(() => {
+    // 使用 window.location.hash 確保能讀取到最新的 hash
+    const hash = window.location.hash.slice(1);
+    
+    // 如果有 hash 且不是在 /news 路由上，則嘗試滾動
+    if (hash && hash !== '' && !location.pathname.includes('/news')) {
+      // 給 MainPage 和動畫足夠的時間載入
+      let attemptCount = 0;
+      const maxAttempts = 25;
+      
+      const tryScroll = () => {
+        const element = document.getElementById(hash);
+        attemptCount++;
+        
+        if (element) {
+          // 找到元素，滾動到它
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        } else if (attemptCount < maxAttempts) {
+          // 繼續重試
+          setTimeout(tryScroll, 200);
+        }
+      };
+      
+      // 先等待 500ms 確保所有組件都已渲染，然後開始嘗試
+      setTimeout(tryScroll, 500);
+    }
+  }, [location.pathname, location.hash]);
+
+  // 當路由變化時，自動滾動到頂部
+  React.useEffect(() => {
+    // 不對 /news 路由執行自動滾動，因為 Header 已經處理了
+    if (location.pathname !== '/news') {
+      // 立即滾動
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      // 也可以設置一個延遲以確保完成
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname]);
+
   const handleMenuClick = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -65,6 +110,7 @@ function AppRoutes() {
         <Header 
           onMenuClick={handleMenuClick}
           isSidebarOpen={sidebarOpen}
+          onScrollToSection={scrollToSection}
         />
       </header>
       <Sidebar 
@@ -78,6 +124,8 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
+          {/* Catch-all：所有其他路由都重定向到主頁 */}
+          <Route path="*" element={<MainPage />} />
         </Routes>
       </div>
 

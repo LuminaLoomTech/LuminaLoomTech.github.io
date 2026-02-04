@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Banner.module.css';
 
@@ -19,7 +19,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
 
   useEffect(() => {
     if (!autoPlay) return; // 如果停止自動播放，不啟動計時器
-    
+
     const timer = setInterval(() => {
       setBannerIndex((prev) => (prev + 1) % banners.length);
     }, 5500);
@@ -42,7 +42,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const minSwipeDistance = 50; // 最小滑動距離
 
@@ -65,7 +65,7 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
     <section className={styles.bannerSection}>
       {/* 全頁面寬度背景層 */}
       {backgroundImage && (
-        <div 
+        <div
           className={styles.bannerBackground}
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
@@ -88,10 +88,10 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
         </svg>
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {/* 粗的內層 - 製造尖端變寬效果 */}
-          <ChevronLeft 
-            size={40} 
+          <ChevronLeft
+            size={40}
             strokeWidth={7}
-            style={{ 
+            style={{
               stroke: 'url(#arrowGradient)',
               position: 'absolute',
               opacity: 0.7
@@ -99,8 +99,8 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
             absoluteStrokeWidth
           />
           {/* 細的外層 - 完整輪廓 */}
-          <ChevronLeft 
-            size={42} 
+          <ChevronLeft
+            size={42}
             strokeWidth={4}
             style={{ stroke: 'url(#arrowGradient)' }}
             absoluteStrokeWidth
@@ -108,20 +108,22 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
         </div>
       </button>
 
-      <div 
-        className={styles.bannerContent}
+      <div
+        className={`${styles.bannerContent} ${banners[bannerIndex].img ? styles.hasImage : styles.noImage}`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <img
-          src={banners[bannerIndex].img}
-          alt={banners[bannerIndex].alt}
-          className={styles.bannerImg}
-          loading="eager"
-          fetchPriority="high"
-          decoding="sync"
-        />
+        {banners[bannerIndex].img && (
+          <img
+            src={banners[bannerIndex].img}
+            alt={banners[bannerIndex].alt}
+            className={styles.bannerImg}
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
+          />
+        )}
         <div className={styles.bannerText}>
           {banners[bannerIndex].text}
         </div>
@@ -135,10 +137,10 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
       >
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {/* 粗的內層 - 製造尖端變寬效果 */}
-          <ChevronRight 
-            size={40} 
+          <ChevronRight
+            size={40}
             strokeWidth={7}
-            style={{ 
+            style={{
               stroke: 'url(#arrowGradient)',
               position: 'absolute',
               opacity: 0.7
@@ -146,8 +148,8 @@ export default function Banner({ banners, backgroundImage }: BannerProps) {
             absoluteStrokeWidth
           />
           {/* 細的外層 - 完整輪廓 */}
-          <ChevronRight 
-            size={42} 
+          <ChevronRight
+            size={42}
             strokeWidth={4}
             style={{ stroke: 'url(#arrowGradient)' }}
             absoluteStrokeWidth

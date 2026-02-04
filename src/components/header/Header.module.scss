@@ -89,6 +89,8 @@
   gap: 32px; /* 導覽項目間距 */
   margin-left: auto;
   margin-right: 40px;
+  position: relative;
+  z-index: 2;
 }
 .navbar a {
   color: #bfe5f0;
@@ -108,6 +110,8 @@
   display: flex;
   align-items: center;
   margin-right: 20px;
+  position: relative;
+  z-index: 2;
 }
 .language-select {
   background: linear-gradient(135deg, rgba(11, 169, 255, 0.1), rgba(60, 255, 255, 0.1));

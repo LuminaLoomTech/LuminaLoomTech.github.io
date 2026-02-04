@@ -3,13 +3,15 @@ import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import sidebarStyles from '../sidebar/Sidebar.module.scss';
+import { useState, useEffect } from 'react';
 
 interface HeaderProps {
     onMenuClick?: () => void;
     isSidebarOpen?: boolean;
+    onScrollToSection?: (sectionId: string) => void;
 }
 
-const Header = ({ onMenuClick, isSidebarOpen }: HeaderProps) => {
+const Header = ({ onMenuClick, isSidebarOpen, onScrollToSection }: HeaderProps) => {
     const { i18n, t } = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,10 +22,41 @@ const Header = ({ onMenuClick, isSidebarOpen }: HeaderProps) => {
         localStorage.setItem('language', lng);
     };
 
+    const handleNewsClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        // 先立即滾動
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        // 導航
+        navigate('/news');
+        // 在導航後多次確保滾動到頂部
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 50);
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 150);
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 300);
+    };
+
     const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (onScrollToSection) {
+            onScrollToSection(sectionId);
+        } else {
+            // Fallback：如果沒有 prop，使用本地邏輯
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     };
 
@@ -74,6 +107,12 @@ const Header = ({ onMenuClick, isSidebarOpen }: HeaderProps) => {
                     }}
                 >
                     {t('nav.services')}
+                </a>
+                <a 
+                    href="#/news"
+                    onClick={handleNewsClick}
+                >
+                    {t('nav.news')}
                 </a>
                 <a 
                     href="#contact"
