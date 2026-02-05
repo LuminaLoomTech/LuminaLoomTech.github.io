@@ -19,7 +19,7 @@ export default function AboutSection() {
       className={styles.aboutSection}
       initial={{ opacity: 0, x: isMobile ? 0 : -100 }}
       whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className={styles.container}>

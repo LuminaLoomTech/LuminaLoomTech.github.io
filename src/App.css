@@ -13,7 +13,6 @@ html {
   transition: none; /* 取消推擠動畫 */
   margin-left: 0;
   width: 100%;
-  overflow-x: hidden; /* 防止水平滾動 */
   /* 移除 position 和 z-index，讓子元素的 z-index 正常運作 */
 }
 

@@ -93,7 +93,7 @@ export default function ContactSection() {
       className={styles.contactSection}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className={styles.contactContainer}>
@@ -101,7 +101,7 @@ export default function ContactSection() {
           className={styles.contactHeader}
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           viewport={{ once: true }}
         >
           <h1 className={styles.contactTitle}>{t('contact.title')}</h1>

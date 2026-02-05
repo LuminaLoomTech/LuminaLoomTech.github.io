@@ -14,16 +14,13 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  overscroll-behavior-x: none;
-  touch-action: pan-y;
   background-color: var(--page-bg);
   color: var(--page-fg);
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden;
+  height: 100%;
 }
 
 body {
@@ -38,46 +35,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-/* 全局頁面滾輪樣式 */
-/* ===== 自訂全域滾輪樣式 ===== */
-
-/* 對 Chrome / Edge / Safari 有效 */
-::-webkit-scrollbar {
-  width: 10px;              /* 滾輪寬度 */
-}
-
-::-webkit-scrollbar-track {
-  background: #111;         /* 滾輪軌道（底色） */
-}
-
-/*可拖曳的滑塊*/
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #76fff8, #0072ff, #00c6ff);
-  background-size: 100% 800%;
-  border-radius: 10px;
-  animation: gradientFlow 2s ease infinite; /* 套用動畫 */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #51b3ff, #3cffff, #51b3ff);
-  background-size: 100% 800%;
-  animation: gradientFlow 2s ease infinite; /* 套用動畫 */
-}
-/* 適用於 Firefox（比較有限） */
-* {
-  scrollbar-width: thin;                     /* 窄版滾輪 */
-  scrollbar-color: #00c6ff #111;             /* 前景色(滑塊)、背景色(軌道) */
-}
-@keyframes gradientFlow {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
-}
-/* ============================ */

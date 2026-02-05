@@ -1,8 +1,8 @@
 .bannerSection {
-    width: 85vw;
+    width: 100%;
     height: 800px; /* 增加高度來完整顯示背景 */
     position: relative;
-    overflow: visible; /* 改為 visible 讓背景可以延伸出容器 */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,16 +26,16 @@
     z-index: 1; /* 在內容之下 */
     pointer-events: none;
     opacity: 0;
-    animation: fadeInBackground 1s ease-in-out forwards;
+    animation: fadeInBackground 0.3s ease-in-out forwards;
 }
 
 @keyframes fadeInBackground {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* 確保內容不會溢出 */
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .bannerImg {

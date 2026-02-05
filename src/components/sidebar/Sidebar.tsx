@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -53,4 +53,4 @@ const Sidebar = ({ item, isOpen, onClose }: SidebarProps) => {
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);

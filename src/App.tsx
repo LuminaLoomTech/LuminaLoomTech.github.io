@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 import MainPage from './pages/MainPage';
-import NewsPage from './pages/news/NewsPage';
 import Sidebar from './components/sidebar/Sidebar';
 import Footer from './components/footer/Footer';
+import Scroller from './components/scroller/Scroller';
 import { HashRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import SplashScreen from "./components/splashscreen/Splashscreen";
 import Header from './components/header/Header';
 import { useTranslation } from 'react-i18next';
 import czLogo3 from './assets/images/CZ_LOGO3.png';
+
+const NewsPage = React.lazy(() => import('./pages/news/NewsPage'));
 
 // 包一個 component 使用 useLocation
 function AppRoutes() {
@@ -16,6 +18,26 @@ function AppRoutes() {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
+  // Helper：操作 Scroller 容器的滾動
+  const scrollToTop = (smooth = false) => {
+    const scrollContainer = document.querySelector('[class*="scrollContainer"]') as HTMLElement;
+    if (scrollContainer) {
+      scrollContainer.scrollTop = 0;
+      scrollContainer.scrollLeft = 0;
+    }
+  };
+
+  const scrollToElement = (element: HTMLElement, smooth = true) => {
+    const scrollContainer = document.querySelector('[class*="scrollContainer"]') as HTMLElement;
+    if (scrollContainer && element) {
+      const elementTop = element.getBoundingClientRect().top + scrollContainer.scrollTop;
+      scrollContainer.scrollTo({
+        top: elementTop - 60, // 減去 Header 高度
+        behavior: smooth ? 'smooth' : 'auto'
+      });
+    }
+  };
 
   // 當路由變化時處理 hash 滾動
   React.useEffect(() => {
@@ -35,10 +57,7 @@ function AppRoutes() {
         if (element) {
           // 找到元素，滾動到它
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-            window.scrollTo({ left: 0, behavior: 'auto' });
-            document.documentElement.scrollLeft = 0;
-            document.body.scrollLeft = 0;
+            scrollToElement(element, true);
           }, 200);
         } else if (attemptCount < maxAttempts) {
           // 繼續重試
@@ -54,14 +73,10 @@ function AppRoutes() {
   // 當路由變化時，自動滾動到頂部（並重置水平捲動）
   React.useEffect(() => {
     // 所有路由變化都滾動到頂部
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    document.documentElement.scrollLeft = 0;
-    document.body.scrollLeft = 0;
+    scrollToTop(false);
     // 也可以設置一個延遲以確保完成
     const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      document.documentElement.scrollLeft = 0;
-      document.body.scrollLeft = 0;
+      scrollToTop(false);
     }, 100);
     return () => clearTimeout(timer);
   }, [location.pathname]);
@@ -80,19 +95,13 @@ function AppRoutes() {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-          window.scrollTo({ left: 0, behavior: 'auto' });
-          document.documentElement.scrollLeft = 0;
-          document.body.scrollLeft = 0;
+          scrollToElement(element, true);
         }
       }, 100);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-        window.scrollTo({ left: 0, behavior: 'auto' });
-        document.documentElement.scrollLeft = 0;
-        document.body.scrollLeft = 0;
+        scrollToElement(element, true);
       }
     }
   };
@@ -106,55 +115,57 @@ function AppRoutes() {
       setSidebarOpen(false);
       
       // 立即滾動到頂部（不等待）
-      window.scrollTo({ top: 0, behavior: 'auto' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      scrollToTop(false);
       
       // 立即導航
       navigate('/news');
       
-      // 持續確保滾動到頂部（對抗可能的干擾）
-      const scrollIntervals = [0, 50, 100, 200, 400, 600, 800];
-      scrollIntervals.forEach(delay => {
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'auto' });
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
-        }, delay);
-      });
+      // 只在導航完成後確保一次滾動
+      setTimeout(() => {
+        scrollToTop(false);
+      }, 100);
     }},
     { label: t('nav.contact'), link: "#contact", onClick: () => scrollToSection('contact') }
   ];
 
   return (
-    <>
-      {/* Sidebar 全站顯示 */}
-      <header>
-        <Header 
-          onMenuClick={handleMenuClick}
-          isSidebarOpen={sidebarOpen}
-          onScrollToSection={scrollToSection}
+    <Scroller>
+      <>
+        {/* Sidebar 全站顯示 */}
+        <header>
+          <Header 
+            onMenuClick={handleMenuClick}
+            isSidebarOpen={sidebarOpen}
+            onScrollToSection={scrollToSection}
+          />
+        </header>
+        <Sidebar 
+          item={menuItems} 
+          isOpen={sidebarOpen} 
+          onClose={() => setSidebarOpen(false)} 
         />
-      </header>
-      <Sidebar 
-        item={menuItems} 
-        isOpen={sidebarOpen} 
-        onClose={() => setSidebarOpen(false)} 
-      />
 
-      {/* 主要內容容器 */}
-      <div className={`app-content ${sidebarOpen ? 'pushed' : ''}`}>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          {/* Catch-all：所有其他路由都重定向到主頁 */}
-          <Route path="*" element={<MainPage />} />
-        </Routes>
-      </div>
+        {/* 主要內容容器 */}
+        <div className={`app-content ${sidebarOpen ? 'pushed' : ''}`}>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route 
+              path="/news" 
+              element={
+                <React.Suspense fallback={<div style={{ padding: '60px 20px' }}>載入中...</div>}>
+                  <NewsPage />
+                </React.Suspense>
+              } 
+            />
+            {/* Catch-all：所有其他路由都重定向到主頁 */}
+            <Route path="*" element={<MainPage />} />
+          </Routes>
+        </div>
 
-      {/* 全站固定 Footer */}
-      <Footer />
-    </>
+        {/* 全站固定 Footer */}
+        <Footer />
+      </>
+    </Scroller>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
@@ -86,4 +86,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

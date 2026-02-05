@@ -3,13 +3,22 @@ import styles from './Header.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import sidebarStyles from '../sidebar/Sidebar.module.scss';
-import { useState, useEffect } from 'react';
+import { memo } from 'react';
 
 interface HeaderProps {
     onMenuClick?: () => void;
     isSidebarOpen?: boolean;
     onScrollToSection?: (sectionId: string) => void;
 }
+
+// Helper：操作 Scroller 容器的滾動
+const scrollToTop = (smooth = false) => {
+    const scrollContainer = document.querySelector('[class*="scrollContainer"]') as HTMLElement;
+    if (scrollContainer) {
+        scrollContainer.scrollTop = 0;
+        scrollContainer.scrollLeft = 0;
+    }
+};
 
 const Header = ({ onMenuClick, isSidebarOpen, onScrollToSection }: HeaderProps) => {
     const { i18n, t } = useTranslation();
@@ -25,26 +34,18 @@ const Header = ({ onMenuClick, isSidebarOpen, onScrollToSection }: HeaderProps) 
     const handleNewsClick = (e: React.MouseEvent) => {
         e.preventDefault();
         // 先立即滾動
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        scrollToTop(false);
         // 導航
         navigate('/news');
         // 在導航後多次確保滾動到頂部
         setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
+            scrollToTop(false);
         }, 50);
         setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
+            scrollToTop(false);
         }, 150);
         setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
+            scrollToTop(false);
         }, 300);
     };
 
@@ -138,4 +139,5 @@ const Header = ({ onMenuClick, isSidebarOpen, onScrollToSection }: HeaderProps) 
         </header>
     )
 }
-export default Header;
+
+export default memo(Header);

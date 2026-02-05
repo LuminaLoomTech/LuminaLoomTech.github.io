@@ -3,6 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 
+// Helper：操作 Scroller 容器的滾動
+const scrollToTop = (smooth = false) => {
+    const scrollContainer = document.querySelector('[class*="scrollContainer"]') as HTMLElement;
+    if (scrollContainer) {
+        scrollContainer.scrollTop = 0;
+        scrollContainer.scrollLeft = 0;
+    }
+};
+
 export default function NewsSection() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -37,7 +46,7 @@ export default function NewsSection() {
             variant="puretext"
             onClick={() => {
               navigate('/news');
-              setTimeout(() => window.scrollTo(0, 0), 100);
+              setTimeout(() => scrollToTop(false), 100);
             }}
           >
             {t('home.viewAllNews') || '查看全部新聞'}

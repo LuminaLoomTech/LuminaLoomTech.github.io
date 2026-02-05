@@ -2,7 +2,6 @@
 .homeSection {
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
   background: linear-gradient(180deg, #0a0e12 0%, #1a2332 40%, #2d4456 80%, #3d5a6b 100%);
 }
 
