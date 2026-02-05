@@ -1,9 +1,17 @@
 import styles from './ServicesSection.module.css';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
 export default function ServicesSection() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const services = [
     {
@@ -42,7 +50,7 @@ export default function ServicesSection() {
     <motion.section 
       id="services" 
       className={styles.servicesSection}
-      initial={{ opacity: 0, x: 100 }}
+      initial={{ opacity: 0, x: isMobile ? 0 : 100 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}

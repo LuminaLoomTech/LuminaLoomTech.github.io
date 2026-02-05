@@ -31,11 +31,11 @@ const Sidebar = ({ item, isOpen, onClose }: SidebarProps) => {
           <div className={styles['sidebar-content']}>
             {item.map((menu) => (
               <div key={`${menu.label}-${menu.link}`} className={styles['sidebar-item']}>
-                <a 
-                  href={menu.onClick ? '#' : menu.link}
+                <a
+                  href={menu.link}
                   onClick={(e) => {
-                    e.preventDefault();
                     if (menu.onClick) {
+                      e.preventDefault();
                       handleClick(menu.onClick);
                     } else {
                       onClose();

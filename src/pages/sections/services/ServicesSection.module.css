@@ -1,6 +1,7 @@
 /* Services Section */
 .servicesSection {
   min-height: 100vh;
+  overflow-x: hidden;
   padding: 80px 20px;
   background: linear-gradient(180deg, #6a9cb5 0%, #6fd8e3 100%);
 }

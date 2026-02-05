@@ -7,6 +7,7 @@ import { PhoneIcon, EmailIcon, LocationIcon, UserIcon, ClockIcon } from '../../.
 
 export default function ContactSection() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,6 +21,12 @@ export default function ContactSection() {
       .then(res => res.json())
       .then(data => setUserIp(data.ip))
       .catch(() => setUserIp('無法取得'));
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -105,7 +112,7 @@ export default function ContactSection() {
           {/* 左側：公司聯絡資訊 */}
           <motion.div 
             className={styles.contactInfo}
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
@@ -178,7 +185,7 @@ export default function ContactSection() {
           <motion.form 
             className={styles.contactForm} 
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}

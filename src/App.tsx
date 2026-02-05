@@ -35,7 +35,10 @@ function AppRoutes() {
         if (element) {
           // 找到元素，滾動到它
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            window.scrollTo({ left: 0, behavior: 'auto' });
+            document.documentElement.scrollLeft = 0;
+            document.body.scrollLeft = 0;
           }, 200);
         } else if (attemptCount < maxAttempts) {
           // 繼續重試
@@ -48,13 +51,17 @@ function AppRoutes() {
     }
   }, [location.pathname, location.hash]);
 
-  // 當路由變化時，自動滾動到頂部
+  // 當路由變化時，自動滾動到頂部（並重置水平捲動）
   React.useEffect(() => {
     // 所有路由變化都滾動到頂部
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    document.documentElement.scrollLeft = 0;
+    document.body.scrollLeft = 0;
     // 也可以設置一個延遲以確保完成
     const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
     }, 100);
     return () => clearTimeout(timer);
   }, [location.pathname]);
@@ -64,22 +71,30 @@ function AppRoutes() {
   };
 
   const scrollToSection = (sectionId: string) => {
+    // 先關閉 Sidebar，避免推擠內容
+    setSidebarOpen(false);
+    
     // 如果不在主頁，先導航到主頁
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+          window.scrollTo({ left: 0, behavior: 'auto' });
+          document.documentElement.scrollLeft = 0;
+          document.body.scrollLeft = 0;
         }
       }, 100);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        window.scrollTo({ left: 0, behavior: 'auto' });
+        document.documentElement.scrollLeft = 0;
+        document.body.scrollLeft = 0;
       }
     }
-    setSidebarOpen(false);
   };
 
   const menuItems = [

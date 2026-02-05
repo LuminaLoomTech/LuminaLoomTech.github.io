@@ -208,6 +208,13 @@
 @media (max-width: 1024px) {
   .bannerSection {
     height: 600px; /* 平板增加高度 */
+    overflow: hidden; /* 避免背景造成水平溢位 */
+  }
+
+  .bannerBackground {
+    width: 100%;
+    left: 0;
+    transform: none;
   }
   
   .bannerImg {
@@ -233,6 +240,7 @@
   .bannerSection {
     height: 450px; /* 手機增加高度 */
     width: 100%;
+    overflow: hidden; /* 避免背景造成水平溢位 */
   }
   
   .bannerImg {
@@ -266,6 +274,7 @@
 @media (max-width: 480px) {
   .bannerSection {
     height: 280px;
+    overflow: hidden; /* 避免背景造成水平溢位 */
   }
   
   .bannerImg {

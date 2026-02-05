@@ -10,13 +10,15 @@ html {
   padding-top: 60px; /* Header 高度，避免內容被遮擋 */
   padding-bottom: var(--footer-height); /* 須大於等於 Footer 的總高度 */
   background-color: var(--page-bg); /* 讓底部留白區與頁面同色 */
-  transition: margin-left 0.8s cubic-bezier(.3,.7,.2,1); /* 與 Sidebar 同步的推擠動畫 */
+  transition: none; /* 取消推擠動畫 */
   margin-left: 0;
+  width: 100%;
+  overflow-x: hidden; /* 防止水平滾動 */
   /* 移除 position 和 z-index，讓子元素的 z-index 正常運作 */
 }
 
 .app-content.pushed {
-  margin-left: 250px; /* Sidebar 寬度 */
+  margin-left: 0; /* 關閉推擠 */
 }
 
 .App-logo {
@@ -56,10 +58,15 @@ html {
 
 /* ========== RWD 響應式設計 ========== */
 
-/* 平板尺寸 (< 1024px) - 調整 Sidebar 推擠寬度 */
+/* 平板尺寸 (< 1024px) - 手機/平板一律不推擠內容 */
 @media (max-width: 1024px) {
   .app-content.pushed {
-    margin-left: 220px;
+    margin-left: 0 !important;
+  }
+
+  .app-content {
+    width: 100%;
+    max-width: 100vw;
   }
 }
 
@@ -67,7 +74,12 @@ html {
 @media (max-width: 768px) {
   /* 手機版不推擠頁面，sidebar 直接覆蓋 */
   .app-content.pushed {
-    margin-left: 0;
+    margin-left: 0 !important;
+  }
+  
+  .app-content {
+    width: 100%;
+    max-width: 100vw;
   }
   
   .navbar {
@@ -97,7 +109,12 @@ html {
 @media (max-width: 480px) {
   /* 手機版不推擠頁面 */
   .app-content.pushed {
-    margin-left: 0;
+    margin-left: 0 !important;
+  }
+  
+  .app-content {
+    width: 100%;
+    max-width: 100vw;
   }
   
   .sidebar {
