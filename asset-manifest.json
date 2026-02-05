@@ -1,19 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.a0a80828.css",
-    "main.js": "/static/js/main.a864d9c1.js",
+    "main.css": "/static/css/main.96b8befd.css",
+    "main.js": "/static/js/main.ba2f2e83.js",
+    "static/css/229.d06fc434.chunk.css": "/static/css/229.d06fc434.chunk.css",
+    "static/js/229.732fcc5d.chunk.js": "/static/js/229.732fcc5d.chunk.js",
     "static/js/453.ad7768ec.chunk.js": "/static/js/453.ad7768ec.chunk.js",
-    "static/media/BANNER.png": "/static/media/BANNER.f2d1329dcc70fe79db2a.png",
     "static/media/CZ_LOGO3-backup.png": "/static/media/CZ_LOGO3-backup.7a9c63a3169d8c4c6004.png",
+    "static/media/BANNER.webp": "/static/media/BANNER.b88ffcea1ed9c59b9351.webp",
+    "static/media/BANNER-optimized.png": "/static/media/BANNER-optimized.fd1bca13207a881a4eb5.png",
+    "static/media/CZ_LOGO3.webp": "/static/media/CZ_LOGO3.9cc37b3c94df2d8cefc6.webp",
     "static/media/CZ_LOGO3-optimized.png": "/static/media/CZ_LOGO3-optimized.abda7948c5262d4ad682.png",
     "static/media/CZ_LOGO3.png": "/static/media/CZ_LOGO3.abda7948c5262d4ad682.png",
     "index.html": "/index.html",
-    "main.a0a80828.css.map": "/static/css/main.a0a80828.css.map",
-    "main.a864d9c1.js.map": "/static/js/main.a864d9c1.js.map",
+    "main.96b8befd.css.map": "/static/css/main.96b8befd.css.map",
+    "main.ba2f2e83.js.map": "/static/js/main.ba2f2e83.js.map",
+    "229.d06fc434.chunk.css.map": "/static/css/229.d06fc434.chunk.css.map",
+    "229.732fcc5d.chunk.js.map": "/static/js/229.732fcc5d.chunk.js.map",
     "453.ad7768ec.chunk.js.map": "/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0a80828.css",
-    "static/js/main.a864d9c1.js"
+    "static/css/main.96b8befd.css",
+    "static/js/main.ba2f2e83.js"
   ]
 }
