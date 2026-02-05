@@ -7,7 +7,6 @@ import Footer from './components/footer/Footer';
 import { HashRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import SplashScreen from "./components/splashscreen/Splashscreen";
 import Header from './components/header/Header';
-import LoginPage from './pages/login/LoginPage';
 import { useTranslation } from 'react-i18next';
 import czLogo3 from './assets/images/CZ_LOGO3.png';
 
@@ -17,7 +16,6 @@ function AppRoutes() {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const [showLogin, setShowLogin] = React.useState(false);
 
   // 當路由變化時處理 hash 滾動
   React.useEffect(() => {
@@ -52,16 +50,13 @@ function AppRoutes() {
 
   // 當路由變化時，自動滾動到頂部
   React.useEffect(() => {
-    // 不對 /news 路由執行自動滾動，因為 Header 已經處理了
-    if (location.pathname !== '/news') {
-      // 立即滾動
+    // 所有路由變化都滾動到頂部
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    // 也可以設置一個延遲以確保完成
+    const timer = setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'auto' });
-      // 也可以設置一個延遲以確保完成
-      const timer = setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }, 100);
-      return () => clearTimeout(timer);
-    }
+    }, 100);
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   const handleMenuClick = () => {
@@ -92,16 +87,29 @@ function AppRoutes() {
     { label: t('nav.about'), link: "#about", onClick: () => scrollToSection('about') },
     { label: t('nav.services'), link: "#services", onClick: () => scrollToSection('services') },
     { label: t('nav.news'), link: "#/news", onClick: () => {
-      navigate('/news');
-      setTimeout(() => window.scrollTo(0, 0), 100);
+      // 關閉 Sidebar
       setSidebarOpen(false);
+      
+      // 立即滾動到頂部（不等待）
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
+      // 立即導航
+      navigate('/news');
+      
+      // 持續確保滾動到頂部（對抗可能的干擾）
+      const scrollIntervals = [0, 50, 100, 200, 400, 600, 800];
+      scrollIntervals.forEach(delay => {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, delay);
+      });
     }},
     { label: t('nav.contact'), link: "#contact", onClick: () => scrollToSection('contact') }
   ];
-
-  if (showLogin) {
-    return <LoginPage />;
-  }
 
   return (
     <>

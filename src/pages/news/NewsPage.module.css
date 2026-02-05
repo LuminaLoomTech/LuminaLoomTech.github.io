@@ -1,7 +1,7 @@
 .newsPage {
   min-height: 100vh;
   padding: 120px 20px 80px;
-  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+  background: transparent;
 }
 
 .container {
