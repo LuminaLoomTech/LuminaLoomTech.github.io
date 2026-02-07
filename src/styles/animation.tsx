@@ -133,14 +133,14 @@ export const particlePresets = {
     }
   },
 
-  // 互動網格
+  // 互動網格（輕量版）
   interactive: {
     particles: {
       number: { 
-        value: 40,
+        value: 20,
         limit: {
           mode: "delete" as const,
-          value: 50
+          value: 25
         }
       },
       color: { value: "#aee7ff" },
@@ -151,16 +151,16 @@ export const particlePresets = {
         enable: true, 
         color: "#5ecfff",
         distance: 200,
-        opacity: 0.5,
+        opacity: 0.4,
         frequency: 0.5,
         warp: false,
-        width: 2
+        width: 1.5
       },
       move: { 
         enable: true, 
-        speed: 1.2,
+        speed: 0.8,
       },
-      size: { value: 4 }
+      size: { value: 3 }
     },
     interactivity: {
       events: {
@@ -174,9 +174,9 @@ export const particlePresets = {
       },
       modes: {
         grab: {
-          distance: 140,
+          distance: 120,
           links: {
-            opacity: 1
+            opacity: 0.8
           }
         }
       }
@@ -270,19 +270,19 @@ export default function ParticleBackground({
   if (isMobile && !customOptions) {
     const mobileOptions = JSON.parse(JSON.stringify(options)); // 深拷貝
     
-    // 減少粒子數量至 40%
+    // 減少粒子數量至 30%
     if (mobileOptions.particles?.number?.value) {
-      mobileOptions.particles.number.value = Math.floor(mobileOptions.particles.number.value * 0.4);
+      mobileOptions.particles.number.value = Math.floor(mobileOptions.particles.number.value * 0.3);
     }
     
     // 限制最大粒子數
     if (!mobileOptions.particles?.number?.limit) {
       mobileOptions.particles.number.limit = {
         mode: "delete" as const,
-        value: 25 // 手機最多 25 個粒子
+        value: 15 // 手機最多 15 個粒子
       };
     } else {
-      mobileOptions.particles.number.limit.value = 25;
+      mobileOptions.particles.number.limit.value = 15;
     }
     
     // 限制點擊新增數量

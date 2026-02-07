@@ -4,14 +4,13 @@ const path = require('path');
 
 const imagesDir = path.join(__dirname, 'src/assets/images');
 
-// 需要壓縮的圖片
+// 需要壓縮的圖片 - 使用現有的 optimized 版本作為源
 const imagesToCompress = [
-  { input: 'BANNER.png', outputs: [
-    { name: 'BANNER.webp', format: 'webp', quality: 75 },
-    { name: 'BANNER-optimized.png', format: 'png', quality: 80 }
+  { input: 'BANNER-optimized.png', outputs: [
+    { name: 'BANNER-final.webp', format: 'webp', quality: 55, resize: { width: 1600 } }
   ]},
   { input: 'CZ_LOGO3.png', outputs: [
-    { name: 'CZ_LOGO3.webp', format: 'webp', quality: 85 }
+    { name: 'CZ_LOGO3-final.webp', format: 'webp', quality: 85 }
   ]}
 ];
 
@@ -31,14 +30,20 @@ async function compressImages() {
       try {
         const outputPath = path.join(imagesDir, output.name);
         
+        let pipeline = sharp(inputPath);
+        
+        // 如果有 resize 設定，先調整大小
+        if (output.resize) {
+          pipeline = pipeline.resize(output.resize.width, null, {
+            fit: 'inside',
+            withoutEnlargement: true
+          });
+        }
+        
         if (output.format === 'webp') {
-          await sharp(inputPath)
-            .webp({ quality: output.quality })
-            .toFile(outputPath);
+          await pipeline.webp({ quality: output.quality }).toFile(outputPath);
         } else if (output.format === 'png') {
-          await sharp(inputPath)
-            .png({ quality: output.quality })
-            .toFile(outputPath);
+          await pipeline.png({ quality: output.quality }).toFile(outputPath);
         }
 
         const outputSize = fs.statSync(outputPath).size / 1024;

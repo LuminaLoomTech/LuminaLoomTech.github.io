@@ -34,7 +34,7 @@ export default function Intro({ onFinish }: Props) {
         setLeaving(true); // 最後一句 → 開始淡出
         localStorage.setItem('introShown', 'true'); // 記錄已看過
       }
-    }, isLast ? 4000 : 3000);
+    }, isLast ? 1000 : 800); // 縮短時間：最後1秒，其他0.8秒
 
     return () => clearTimeout(timer);
   }, [index, isLast, leaving, show]);

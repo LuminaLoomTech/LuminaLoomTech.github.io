@@ -1,21 +1,26 @@
-﻿import { useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import styles from './HomeSection.module.css';
 import Banner from '../../../components/banner/Banner';
-import Intro from '../../../components/intro/Intro';
 import NewsSection from '../../../components/sections/NewsSection';
 import ParticleBackground from '../../../styles/animation';
 import { useTranslation } from 'react-i18next';
+import bannerBgImage from '../../../assets/images/BANNER-final.webp';
+
+// 預設 banners（立即可用，不依賴 i18n）
+const DEFAULT_BANNERS = [
+  { img: '', alt: '廣告1', text: '軟體設計' },
+  { img: '', alt: '廣告2', text: 'APP設計' },
+  { img: '', alt: '廣告3', text: '遊戲設計' },
+  { img: '', alt: '廣告4', text: '網頁設計' },
+];
 
 export default function HomeSection() {
   const { t, i18n } = useTranslation();
+  const [bannerLoaded, setBannerLoaded] = useState(false);
 
-  const [introActive, setIntroActive] = useState(() => {
-    return !localStorage.getItem('introShown');
-  });
-
-  // 動態讀取所有 banner
-  const getBanners = () => {
-    const banners = [];
+  // 使用 useMemo 快取 banners，有翻譯時更新
+  const banners = useMemo(() => {
+    const bannerList = [];
     let index = 1;
 
     while (i18n.exists(`home.banner${index}Text`)) {
@@ -32,7 +37,7 @@ export default function HomeSection() {
         }
       }
       
-      banners.push({
+      bannerList.push({
         img: image,
         alt: `廣告${index}`,
         text: text
@@ -41,34 +46,26 @@ export default function HomeSection() {
       index++;
     }
 
-    return banners;
-  };
+    // 如果沒有翻譯數據，返回預設值
+    return bannerList.length > 0 ? bannerList : DEFAULT_BANNERS;
+  }, [i18n, t]);
 
-  const banners = getBanners();
-
-  const getBackgroundImage = () => {
-    if (i18n.exists('home.bannerBackground')) {
-      const imageName = t('home.bannerBackground');
-      try {
-        return require(`../../../assets/images/${imageName}`);
-      } catch (error) {
-        console.warn(`背景圖片載入失敗: ${imageName}`);
-        return undefined;
-      }
-    }
-    return undefined;
-  };
-
-  const backgroundImage = getBackgroundImage();
+  // 靜態導入背景圖片，立即可用
+  const backgroundImage = bannerBgImage;
 
   return (
     <section id="home" className={styles.homeSection}>
-      <div className={styles.particleContainer}>
-        <ParticleBackground preset='interactive'/>
-      </div>
-      {introActive && <Intro onFinish={() => setIntroActive(false)} />}
+      {bannerLoaded && (
+        <div className={styles.particleContainer}>
+          <ParticleBackground preset='interactive'/>
+        </div>
+      )}
       <div style={{ zIndex: 1 }}>
-        <Banner banners={banners} backgroundImage={backgroundImage} />
+        <Banner 
+          banners={banners} 
+          backgroundImage={backgroundImage}
+          onImageLoad={() => setBannerLoaded(true)}
+        />
       </div>
       <NewsSection />
     </section>

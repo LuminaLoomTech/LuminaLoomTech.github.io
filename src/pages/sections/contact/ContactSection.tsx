@@ -91,17 +91,17 @@ export default function ContactSection() {
     <motion.section 
       id="contact" 
       className={styles.contactSection}
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className={styles.contactContainer}>
         <motion.header 
           className={styles.contactHeader}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <h1 className={styles.contactTitle}>{t('contact.title')}</h1>
@@ -112,10 +112,10 @@ export default function ContactSection() {
           {/* 左側：公司聯絡資訊 */}
           <motion.div 
             className={styles.contactInfo}
-            initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h2>{t('contact.ourInfo')}</h2>
             
@@ -185,10 +185,10 @@ export default function ContactSection() {
           <motion.form 
             className={styles.contactForm} 
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: isMobile ? 0 : 50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <h2>{t('contact.formTitle')}</h2>
 

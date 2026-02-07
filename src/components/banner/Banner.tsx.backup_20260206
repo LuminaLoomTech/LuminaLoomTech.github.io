@@ -9,10 +9,9 @@ interface BannerProps {
     text: string;
   }>;
   backgroundImage?: string;
-  onImageLoad?: () => void;
 }
 
-export default function Banner({ banners, backgroundImage, onImageLoad }: BannerProps) {
+export default function Banner({ banners, backgroundImage }: BannerProps) {
   const [bannerIndex, setBannerIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [touchStart, setTouchStart] = useState(0);
@@ -66,14 +65,9 @@ export default function Banner({ banners, backgroundImage, onImageLoad }: Banner
     <section className={styles.bannerSection}>
       {/* 全頁面寬度背景層 */}
       {backgroundImage && (
-        <img
-          src={backgroundImage}
-          alt="Banner Background"
+        <div
           className={styles.bannerBackground}
-          loading="eager"
-          fetchPriority="high"
-          decoding="sync"
-          onLoad={onImageLoad}
+          style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}
       <button
@@ -131,7 +125,7 @@ export default function Banner({ banners, backgroundImage, onImageLoad }: Banner
           />
         )}
         <div className={styles.bannerText}>
-          {banners[bannerIndex]?.text || '軟體設計'}
+          {banners[bannerIndex].text}
         </div>
       </div>
 

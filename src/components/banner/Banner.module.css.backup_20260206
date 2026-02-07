@@ -20,14 +20,13 @@
     transform: translateX(-50%);
     width: 100vw;
     height: 100%; /* 充滿整個容器 */
-    object-fit: cover; /* 填滿整個區域，視覺效果更好 */
-    object-position: center; /* 居中顯示 */
+    background-size: cover; /* 填滿整個區域，視覺效果更好 */
+    background-position: center; /* 居中顯示 */
+    background-repeat: no-repeat;
     z-index: 1; /* 在內容之下 */
     pointer-events: none;
     opacity: 0;
     animation: fadeInBackground 0.3s ease-in-out forwards;
-    /* 確保這個圖片是 LCP 候選 */
-    contain: layout style paint;
 }
 
 @keyframes fadeInBackground {
@@ -36,17 +35,6 @@
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -83,9 +71,7 @@
     background: rgba(0,0,0,0.25);
     padding: 10px 32px;
     border-radius: 10px;
-    z-index: 12;
-    /* 確保文字立即渲染，不阻塞 */
-    contain: content;
+    z-index: 12; /* 高於 Sidebar */
 }
 .bannerBtn {
   /* 定位與尺寸 */
