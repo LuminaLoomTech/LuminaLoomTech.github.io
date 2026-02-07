@@ -17,6 +17,7 @@ const DEFAULT_BANNERS = [
 export default function HomeSection() {
   const { t, i18n } = useTranslation();
   const [bannerLoaded, setBannerLoaded] = useState(false);
+  const [showParticle, setShowParticle] = useState(false);
 
   // 使用 useMemo 快取 banners，有翻譯時更新
   const banners = useMemo(() => {
@@ -55,7 +56,7 @@ export default function HomeSection() {
 
   return (
     <section id="home" className={styles.homeSection}>
-      {bannerLoaded && (
+      {showParticle && (
         <div className={styles.particleContainer}>
           <ParticleBackground preset='interactive'/>
         </div>
@@ -64,7 +65,10 @@ export default function HomeSection() {
         <Banner 
           banners={banners} 
           backgroundImage={backgroundImage}
-          onImageLoad={() => setBannerLoaded(true)}
+          onImageLoad={() => {
+            setBannerLoaded(true);
+            setTimeout(() => setShowParticle(true), 500);
+          }}
         />
       </div>
       <NewsSection />
