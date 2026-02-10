@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.2ad372fa.css",
-    "main.js": "/static/js/main.84248888.js",
-    "static/css/229.d06fc434.chunk.css": "/static/css/229.d06fc434.chunk.css",
+    "main.css": "/static/css/main.539bdf34.css",
+    "main.js": "/static/js/main.6f983198.js",
+    "static/css/229.c1133f0c.chunk.css": "/static/css/229.c1133f0c.chunk.css",
     "static/js/229.1c6612bc.chunk.js": "/static/js/229.1c6612bc.chunk.js",
     "static/js/453.ad7768ec.chunk.js": "/static/js/453.ad7768ec.chunk.js",
     "static/media/CZ_LOGO3-backup.png": "/static/media/CZ_LOGO3-backup.7a9c63a3169d8c4c6004.png",
@@ -14,14 +14,14 @@
     "static/media/CZ_LOGO3-optimized.png": "/static/media/CZ_LOGO3-optimized.abda7948c5262d4ad682.png",
     "static/media/CZ_LOGO3.png": "/static/media/CZ_LOGO3.abda7948c5262d4ad682.png",
     "index.html": "/index.html",
-    "main.2ad372fa.css.map": "/static/css/main.2ad372fa.css.map",
-    "main.84248888.js.map": "/static/js/main.84248888.js.map",
-    "229.d06fc434.chunk.css.map": "/static/css/229.d06fc434.chunk.css.map",
+    "main.539bdf34.css.map": "/static/css/main.539bdf34.css.map",
+    "main.6f983198.js.map": "/static/js/main.6f983198.js.map",
+    "229.c1133f0c.chunk.css.map": "/static/css/229.c1133f0c.chunk.css.map",
     "229.1c6612bc.chunk.js.map": "/static/js/229.1c6612bc.chunk.js.map",
     "453.ad7768ec.chunk.js.map": "/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2ad372fa.css",
-    "static/js/main.84248888.js"
+    "static/css/main.539bdf34.css",
+    "static/js/main.6f983198.js"
   ]
 }
