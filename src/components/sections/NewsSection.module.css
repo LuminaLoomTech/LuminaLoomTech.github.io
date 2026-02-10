@@ -2,7 +2,6 @@
   padding: 30px;
   background: linear-gradient(180deg, #4a6676 0%, #5a8fb0 100%);
   backdrop-filter: blur(10px);
-  border-radius: 12px;
   width: 100%;
   position: relative;
   z-index: 0;

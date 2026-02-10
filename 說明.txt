@@ -1,4 +1,0 @@
-React框架+typescript
-
-動畫套件:framer-motion
-設定工具:CRACO (@/路徑設定)
