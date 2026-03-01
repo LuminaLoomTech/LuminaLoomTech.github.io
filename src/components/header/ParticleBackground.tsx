@@ -14,7 +14,7 @@ export default function ParticleBackground({ preset = "interactive" }: ParticleB
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    console.log('🎨 ParticleBackground 載入，當前 preset:', preset);
+    // ...existing code...
     // 當 preset 改變時，強制重新渲染
     setKey(prev => prev + 1);
     // 檢測螢幕尺寸

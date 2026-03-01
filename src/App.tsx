@@ -92,27 +92,12 @@ function AppRoutes() {
     // 如果不在主頁，先導航到主頁
     if (location.pathname !== '/') {
       navigate('/');
-      // 使用重試機制確保元素已渲染
-      let attemptCount = 0;
-      const maxAttempts = 20;
-      
-      const tryScroll = () => {
+      setTimeout(() => {
         const element = document.getElementById(sectionId);
-        attemptCount++;
-        
         if (element) {
-          // 找到元素，滾動到它
-          setTimeout(() => {
-            scrollToElement(element, true);
-          }, 100);
-        } else if (attemptCount < maxAttempts) {
-          // 繼續重試
-          setTimeout(tryScroll, 150);
+          scrollToElement(element, true);
         }
-      };
-      
-      // 先等待 300ms 確保路由切換完成，然後開始嘗試
-      setTimeout(tryScroll, 300);
+      }, 100);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
