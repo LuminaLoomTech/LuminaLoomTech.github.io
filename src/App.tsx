@@ -9,8 +9,12 @@ import SplashScreen from "./components/splashscreen/Splashscreen";
 import Header from './components/header/Header';
 import { useTranslation } from 'react-i18next';
 import czLogo3 from './assets/images/CZ_LOGO3.png';
+import CookieConsent from './components/cookie/CookieConsent';
 
 const NewsPage = React.lazy(() => import('./pages/news/NewsPage'));
+const ProductsPage = React.lazy(() => import('./pages/products/ProductsPage'));
+const ShopPage = React.lazy(() => import('./pages/shop/ShopPage'));
+const GamesPage = React.lazy(() => import('./pages/games/GamesPage'));
 
 // 包一個 component 使用 useLocation
 function AppRoutes() {
@@ -18,6 +22,7 @@ function AppRoutes() {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const pendingSectionRef = React.useRef<string | null>(null);
 
   // Helper：操作 Scroller 容器的滾動
   const scrollToTop = (smooth = false) => {
@@ -41,6 +46,10 @@ function AppRoutes() {
 
   // 當路由變化時處理 hash 滾動
   React.useEffect(() => {
+    if (pendingSectionRef.current) {
+      return;
+    }
+
     // 使用 window.location.hash 確保能讀取到最新的 hash
     const hash = window.location.hash.slice(1);
     
@@ -72,6 +81,10 @@ function AppRoutes() {
 
   // 當路由變化時，自動滾動到頂部（並重置水平捲動）
   React.useEffect(() => {
+    if (location.pathname === '/' && pendingSectionRef.current) {
+      return;
+    }
+
     // 所有路由變化都滾動到頂部
     scrollToTop(false);
     // 也可以設置一個延遲以確保完成
@@ -85,24 +98,49 @@ function AppRoutes() {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const scrollToSection = (sectionId: string) => {
-    // 先關閉 Sidebar，避免推擠內容
-    setSidebarOpen(false);
-    
-    // 如果不在主頁，先導航到主頁
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          scrollToElement(element, true);
-        }
-      }, 100);
-    } else {
+  React.useEffect(() => {
+    if (location.pathname !== '/' || !pendingSectionRef.current) {
+      return;
+    }
+
+    let attemptCount = 0;
+    const maxAttempts = 20;
+
+    const tryScrollToPendingSection = () => {
+      const sectionId = pendingSectionRef.current;
+      if (!sectionId) {
+        return;
+      }
+
       const element = document.getElementById(sectionId);
+      attemptCount += 1;
+
       if (element) {
         scrollToElement(element, true);
+        pendingSectionRef.current = null;
+        return;
       }
+
+      if (attemptCount < maxAttempts) {
+        window.setTimeout(tryScrollToPendingSection, 120);
+      }
+    };
+
+    window.setTimeout(tryScrollToPendingSection, 80);
+  }, [location.pathname]);
+
+  const scrollToSection = (sectionId: string) => {
+    setSidebarOpen(false);
+
+    if (location.pathname !== '/') {
+      pendingSectionRef.current = sectionId;
+      navigate('/');
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      scrollToElement(element, true);
     }
   };
 
@@ -110,6 +148,30 @@ function AppRoutes() {
     { label: t('nav.home'), link: "#home", onClick: () => scrollToSection('home') },
     { label: t('nav.about'), link: "#about", onClick: () => scrollToSection('about') },
     { label: t('nav.services'), link: "#services", onClick: () => scrollToSection('services') },
+    { label: t('nav.products'), link: "#/products", onClick: () => {
+      setSidebarOpen(false);
+      scrollToTop(false);
+      navigate('/products');
+      setTimeout(() => {
+        scrollToTop(false);
+      }, 100);
+    }},
+    { label: t('nav.shop'), link: "#/shop", onClick: () => {
+      setSidebarOpen(false);
+      scrollToTop(false);
+      navigate('/shop');
+      setTimeout(() => {
+        scrollToTop(false);
+      }, 100);
+    }},
+    { label: t('nav.games'), link: "#/games", onClick: () => {
+      setSidebarOpen(false);
+      scrollToTop(false);
+      navigate('/games');
+      setTimeout(() => {
+        scrollToTop(false);
+      }, 100);
+    }},
     { label: t('nav.news'), link: "#/news", onClick: () => {
       // 關閉 Sidebar
       setSidebarOpen(false);
@@ -157,6 +219,30 @@ function AppRoutes() {
                 </React.Suspense>
               } 
             />
+            <Route 
+              path="/products" 
+              element={
+                <React.Suspense fallback={<div style={{ padding: '60px 20px' }}>載入中...</div>}>
+                  <ProductsPage />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/shop" 
+              element={
+                <React.Suspense fallback={<div style={{ padding: '60px 20px' }}>載入中...</div>}>
+                  <ShopPage />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/games" 
+              element={
+                <React.Suspense fallback={<div style={{ padding: '60px 20px' }}>載入中...</div>}>
+                  <GamesPage />
+                </React.Suspense>
+              } 
+            />
             {/* Catch-all：所有其他路由都重定向到主頁 */}
             <Route path="*" element={<MainPage />} />
           </Routes>
@@ -164,6 +250,7 @@ function AppRoutes() {
 
         {/* 全站固定 Footer */}
         <Footer />
+        <CookieConsent />
       </>
     </Scroller>
   );

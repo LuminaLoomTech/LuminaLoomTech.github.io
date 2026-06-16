@@ -1,0 +1,150 @@
+.cookiePanel {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10020;
+  width: min(420px, calc(100vw - 28px));
+  overflow: hidden;
+  border: 1px solid rgba(91, 192, 255, 0.28);
+  border-radius: 10px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(11, 29, 45, 0.94), rgba(7, 18, 30, 0.97));
+  color: #edf8ff;
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.panelGlow {
+  position: absolute;
+  inset: -80px auto auto -90px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(66, 183, 255, 0.34), transparent 70%);
+  pointer-events: none;
+}
+
+.panelHeader {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 34px;
+  gap: 12px;
+  align-items: center;
+}
+
+.iconWrap {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(91, 192, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(66, 183, 255, 0.12);
+  color: #8ee8ff;
+}
+
+.panelHeader span {
+  display: block;
+  color: #7bdcff;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panelHeader h2 {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.closeButton {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(91, 192, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(238, 249, 255, 0.86);
+  cursor: pointer;
+}
+
+.cookiePanel p {
+  position: relative;
+  margin-top: 14px;
+  color: rgba(224, 244, 250, 0.76);
+  line-height: 1.72;
+}
+
+.detailBox {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  border: 1px solid rgba(91, 192, 255, 0.16);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.detailBox strong {
+  color: #f6fbff;
+}
+
+.detailBox span {
+  color: rgba(224, 244, 250, 0.7);
+  line-height: 1.55;
+}
+
+.actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.primaryButton,
+.secondaryButton,
+.textButton {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.primaryButton {
+  border: 1px solid rgba(91, 192, 255, 0.48);
+  background: linear-gradient(135deg, #42b7ff, #2fd2cf);
+  color: #03111e;
+}
+
+.secondaryButton,
+.textButton {
+  border: 1px solid rgba(91, 192, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: #edf8ff;
+}
+
+@media (max-width: 520px) {
+  .cookiePanel {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .textButton {
+    flex: 1 1 100%;
+  }
+}

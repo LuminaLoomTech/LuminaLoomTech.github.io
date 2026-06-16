@@ -1,0 +1,351 @@
+.gamesPage {
+  min-height: 100vh;
+  background: #02020a;
+  color: #f7f4ff;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 118px 20px 78px;
+  background:
+    radial-gradient(circle at 50% 26%, rgba(151, 92, 255, 0.34), transparent 26%),
+    radial-gradient(circle at 72% 58%, rgba(66, 183, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, #02020a 0%, #090817 48%, #02020a 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 34%;
+  background: linear-gradient(180deg, transparent, rgba(2, 2, 10, 0.94));
+  pointer-events: none;
+}
+
+.starGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(rgba(139, 220, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 220, 255, 0.05) 1px, transparent 1px);
+  background-size: 130px 130px, 86px 86px, 86px 86px;
+  opacity: 0.28;
+}
+
+.heroInner,
+.worldSection,
+.featureSection,
+.steamSection {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1.28fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  color: #8bdcff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1 {
+  max-width: 680px;
+  margin-top: 14px;
+  color: #ffffff;
+  font-size: clamp(2.7rem, 6vw, 5.8rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.heroCopy p,
+.sectionHeader p,
+.featureCard p,
+.steamPanel p {
+  color: rgba(239, 235, 255, 0.74);
+  line-height: 1.7;
+}
+
+.heroCopy p {
+  max-width: 420px;
+  margin-top: 20px;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.steamButton,
+.secondaryButton,
+.steamPanel a {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 900;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.steamButton {
+  border: 1px solid rgba(151, 92, 255, 0.5);
+  background: linear-gradient(135deg, #9f5cff, #42b7ff);
+  color: #060913;
+  box-shadow: 0 18px 38px rgba(151, 92, 255, 0.22);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(139, 220, 255, 0.28);
+  background: rgba(255, 255, 255, 0.05);
+  color: #eff6ff;
+}
+
+.steamButton:hover,
+.secondaryButton:hover,
+.steamPanel a:hover {
+  transform: translateY(-2px);
+}
+
+.gameVisual {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(248, 241, 255, 0.12), transparent 16%),
+    radial-gradient(circle at 50% 56%, rgba(159, 92, 255, 0.22), transparent 30%);
+  box-shadow: none;
+}
+
+.keyArtImage {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.04) contrast(1.03);
+}
+
+.keyArtImage + .moon,
+.keyArtImage + .moon + .castleSilhouette {
+  opacity: 0.22;
+}
+
+.moon {
+  position: absolute;
+  top: 74px;
+  right: 17%;
+  width: 158px;
+  height: 158px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8f1ff 0%, #bda8ff 58%, transparent 62%);
+  box-shadow: 0 0 60px rgba(189, 168, 255, 0.45);
+}
+
+.castleSilhouette {
+  position: absolute;
+  right: 6%;
+  bottom: 118px;
+  left: 6%;
+  height: 280px;
+  background: linear-gradient(180deg, rgba(20, 18, 38, 0.2), #02020a);
+  clip-path: polygon(0 100%, 0 72%, 9% 72%, 9% 46%, 18% 46%, 18% 62%, 30% 62%, 30% 28%, 42% 28%, 42% 58%, 52% 58%, 52% 12%, 66% 12%, 66% 64%, 78% 64%, 78% 42%, 89% 42%, 89% 72%, 100% 72%, 100% 100%);
+}
+
+.castleSilhouette span {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 260px;
+  background: linear-gradient(180deg, transparent, rgba(139, 220, 255, 0.35), transparent);
+}
+
+.castleSilhouette span:nth-child(1) {
+  left: 28%;
+}
+
+.castleSilhouette span:nth-child(2) {
+  left: 52%;
+}
+
+.castleSilhouette span:nth-child(3) {
+  left: 74%;
+}
+
+.dialogPanel {
+  position: absolute;
+  z-index: 4;
+  right: 8%;
+  bottom: 34px;
+  left: auto;
+  width: min(390px, 84%);
+  border: 1px solid rgba(139, 220, 255, 0.2);
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: rgba(8, 10, 26, 0.62);
+  backdrop-filter: blur(14px);
+}
+
+.dialogPanel strong {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.dialogPanel p {
+  margin-top: 8px;
+  color: rgba(239, 235, 255, 0.72);
+}
+
+.worldSection,
+.featureSection,
+.steamSection {
+  padding: 82px 0;
+}
+
+.sectionHeader {
+  max-width: 540px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader h2 {
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+}
+
+.sectionHeader p {
+  margin-top: 12px;
+}
+
+.worldMap,
+.featureGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.worldMap {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.worldNode,
+.featureCard,
+.steamPanel {
+  border: 1px solid rgba(139, 220, 255, 0.12);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(21, 25, 48, 0.58), rgba(10, 15, 30, 0.72));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.worldNode {
+  display: grid;
+  min-height: 98px;
+  place-items: center;
+  gap: 10px;
+  padding: 18px;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.worldNode svg,
+.featureCard svg,
+.steamPanel > svg {
+  color: #a687ff;
+}
+
+.featureGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.featureCard {
+  display: grid;
+  min-height: 132px;
+  place-items: center;
+  padding: 22px;
+  text-align: center;
+}
+
+.featureCard h3 {
+  margin-top: 16px;
+  color: #ffffff;
+  font-size: 1.12rem;
+}
+
+.featureCard p {
+  margin-top: 10px;
+}
+
+.steamPanel {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.steamPanel h2 {
+  margin-top: 6px;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+.steamPanel a {
+  border: 1px solid rgba(151, 92, 255, 0.5);
+  background: linear-gradient(135deg, #9f5cff, #42b7ff);
+  color: #060913;
+}
+
+@media (max-width: 1080px) {
+  .heroInner,
+  .featureGrid,
+  .worldMap {
+    grid-template-columns: 1fr;
+  }
+
+  .gameVisual {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 94px;
+  }
+
+  .heroActions,
+  .steamPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .steamButton,
+  .secondaryButton,
+  .steamPanel a {
+    width: 100%;
+  }
+}

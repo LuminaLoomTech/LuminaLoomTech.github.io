@@ -78,7 +78,7 @@ $sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
   background: $sidebar-bg-color;
   border: none; 
   cursor: pointer;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   margin-right: 15px; /* 與 Logo 的間距 */
@@ -145,6 +145,12 @@ $sidebar-hover-color: rgba(68, 68, 68, 0.9); /* 半透明懸停色 */
   
   .sidebar {
     width: $sidebar-width;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar-toggle {
+    display: flex;
   }
 }
 

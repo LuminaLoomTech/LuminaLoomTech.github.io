@@ -2,15 +2,18 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;                       // 橫跨整個頁面
+  width: 100%;
+  min-height: 76px;
   display: flex;
-  justify-content: flex-start;       // 從左邊開始排
-  align-items: center;               // 垂直置中
-  padding: 8px 20px;
-  background-color: #181818;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 9999;                    // 超高層級，確保在最上方
-  overflow: hidden;                 // 隐藏溢出的動畫
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0 18px 0 16px;
+  background:
+    linear-gradient(90deg, rgba(14, 129, 188, 0.42) 0%, rgba(10, 22, 30, 0.96) 26%, rgba(16, 18, 18, 0.98) 100%);
+  border-bottom: 1px solid rgba(102, 210, 255, 0.22);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  z-index: 9999;
+  overflow: visible;
 }
 
 // 水波流動背景
@@ -24,9 +27,9 @@
     90deg,
     transparent 0%,
     transparent 30%,
-    rgba(11, 169, 255, 0.3) 40%,
-    rgba(60, 255, 255, 0.6) 50%,
-    rgba(11, 169, 255, 0.7) 60%,
+    rgba(32, 151, 255, 0.16) 40%,
+    rgba(74, 202, 255, 0.22) 50%,
+    rgba(31, 119, 226, 0.24) 60%,
     transparent 70%,
     transparent 100%
   );
@@ -48,20 +51,33 @@
 .logo {
   display: flex;
   align-items: center;
-  text-decoration: none;             // 移除超連結底線
-  color: #333;                       // 公司名稱文字顏色
+  align-self: stretch;
+  min-width: 250px;
+  padding-right: 24px;
+  text-decoration: none;
+  color: #d9f5ff;
   position: relative;
-  z-index: 2;                        // 低於按鈕
+  z-index: 2;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 18%;
+  width: 1px;
+  height: 64%;
+  background: linear-gradient(180deg, transparent, rgba(114, 219, 255, 0.6), transparent);
 }
 
 .logo-img {
-  height: 55px;
+  height: 48px;
   width: auto;
   margin-right: 10px;
 }
 
 .company-name {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   background: linear-gradient(
     90deg,
@@ -86,70 +102,254 @@
 }
 .navbar {
   display: flex;
-  gap: 32px; /* 導覽項目間距 */
+  align-self: stretch;
+  gap: 0;
   margin-left: auto;
-  margin-right: 40px;
+  margin-right: 18px;
   position: relative;
   z-index: 2;
+  background: linear-gradient(90deg, rgba(13, 39, 52, 0.82), rgba(19, 20, 20, 0.82));
+  border-left: 1px solid rgba(104, 197, 238, 0.18);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
-.navbar a {
-  color: #bfe5f0;
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.navLink {
+  color: #d8f4ff;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-.navbar a:hover,
-.navbar a.active {
-  background: #0ba9ff;
-  color: #fff;
-}
-.language-switcher {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  min-width: 96px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.32);
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+}
+
+.navLink:hover,
+.navLink.active,
+.active {
+  background: linear-gradient(135deg, #168fc4 0%, #1179aa 48%, #0e617f 100%);
+  color: #fff;
+  box-shadow: inset 0 -3px 0 rgba(104, 231, 255, 0.78), 0 0 20px rgba(31, 143, 216, 0.22);
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 310px;
+  padding: 16px;
+  background:
+    linear-gradient(145deg, rgba(8, 29, 43, 0.98), rgba(9, 17, 23, 0.98)),
+    radial-gradient(circle at 10% 0%, rgba(40, 157, 255, 0.24), transparent 38%);
+  border: 1px solid rgba(92, 197, 255, 0.28);
+  border-top: 3px solid rgba(80, 207, 255, 0.92);
+  box-shadow: 0 24px 46px rgba(0, 0, 0, 0.48), 0 0 28px rgba(22, 130, 196, 0.18);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.navItem:nth-last-child(-n + 2) .dropdownPanel {
+  left: auto;
+  right: 0;
+}
+
+.navItem:hover .dropdownPanel,
+.navItem:focus-within .dropdownPanel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdownTitle {
+  display: block;
+  color: #78d7ff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.dropdownList {
+  display: grid;
+  gap: 8px;
+}
+
+.dropdownButton {
+  width: 100%;
+  min-height: 62px;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid rgba(101, 196, 255, 0.14);
+  border-radius: 4px;
+  color: #e9f8ff;
+  background: linear-gradient(90deg, rgba(19, 58, 82, 0.66), rgba(8, 20, 28, 0.74));
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+}
+
+.dropdownButton span {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.dropdownButton small {
+  color: rgba(198, 235, 255, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus-visible {
+  outline: none;
+  border-color: rgba(103, 218, 255, 0.58);
+  background: linear-gradient(90deg, rgba(20, 106, 157, 0.76), rgba(10, 40, 58, 0.86));
+  transform: translateX(3px);
+}
+
+.language-switcher {
   position: relative;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin-right: 0;
   z-index: 2;
 }
-.language-select {
-  background: linear-gradient(135deg, rgba(11, 169, 255, 0.1), rgba(60, 255, 255, 0.1));
-  border: 1px solid #0ba9ff;
-  color: #86e5ff;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 6px;
+
+.languageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 116px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(86, 195, 255, 0.5);
+  border-radius: 4px;
+  color: #dff7ff;
+  background: linear-gradient(135deg, rgba(13, 39, 52, 0.78), rgba(11, 23, 30, 0.88));
+  box-shadow: inset 0 0 18px rgba(35, 149, 218, 0.12);
   cursor: pointer;
-  transition: all 0.3s;
-  min-width: 110px;
-  text-align: center;
-  
-  &:hover {
-    border-color: #ffffff;
-    background: linear-gradient(135deg, rgba(11, 169, 255, 0.2), rgba(60, 255, 255, 0.2));
-    box-shadow: 0 0 8px rgba(11, 169, 255, 0.3);
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: #3cffff;
-    box-shadow: 0 0 12px rgba(60, 255, 255, 0.4);
-  }
-  
-  option {
-    background: #181818;
-    color: #1fc3dc;
-    padding: 8px;
-  }
+  font: inherit;
+  font-size: 0.96rem;
+  font-weight: 900;
+  transition: border-color 0.24s, box-shadow 0.24s, background 0.24s, transform 0.24s;
+}
+
+.languageButton:hover,
+.languageButton:focus-visible {
+  outline: none;
+  border-color: #ffffff;
+  background: linear-gradient(135deg, rgba(18, 96, 143, 0.28), rgba(11, 23, 30, 0.9));
+  box-shadow: 0 0 12px rgba(62, 180, 255, 0.26), inset 0 0 20px rgba(35, 149, 218, 0.18);
+}
+
+.languageIcon {
+  flex: 0 0 auto;
+  color: #83ddff;
+  filter: drop-shadow(0 0 8px rgba(80, 195, 255, 0.42));
+}
+
+.languageChevron {
+  flex: 0 0 auto;
+  color: #c7efff;
+  transition: transform 0.22s ease;
+}
+
+.languageChevronOpen {
+  transform: rotate(180deg);
+}
+
+.languageMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 150px;
+  padding: 8px;
+  border: 1px solid rgba(92, 197, 255, 0.32);
+  border-top: 3px solid rgba(80, 207, 255, 0.92);
+  border-radius: 4px;
+  background:
+    linear-gradient(145deg, rgba(8, 29, 43, 0.98), rgba(9, 17, 23, 0.98)),
+    radial-gradient(circle at 12% 0%, rgba(40, 157, 255, 0.22), transparent 42%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 24px rgba(22, 130, 196, 0.2);
+}
+
+.languageOption {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #d8f4ff;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.languageOption:hover,
+.languageOption:focus-visible,
+.languageOptionActive {
+  outline: none;
+  color: #ffffff;
+  border-color: rgba(103, 218, 255, 0.42);
+  background: linear-gradient(90deg, rgba(20, 106, 157, 0.72), rgba(10, 40, 58, 0.82));
 }
 .slogan {
-  font-size: 0.95rem;
-  color: #7ebcff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 2px 10px;
+  font-size: 0.82rem;
+  font-family: "Rajdhani", "Oxanium", "Orbitron", "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: transparent;
   margin-left: 16px;
-  font-style: Courier New;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
+  background: linear-gradient(90deg, #77cfff 0%, #d8f7ff 46%, #59bbff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 14px rgba(88, 190, 255, 0.46);
+}
+
+.slogan::before,
+.slogan::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 208, 255, 0.76), transparent);
+}
+
+.slogan::before {
+  top: 0;
+}
+
+.slogan::after {
+  bottom: 0;
 }
 
 /* ========== RWD 響應式設計 ========== */
@@ -157,7 +357,17 @@
 /* 平板尺寸 (768px - 1024px) */
 @media (max-width: 1024px) {
   .header {
-    padding: 5px 15px;
+    min-height: 66px;
+    padding: 0 12px;
+  }
+
+  .logo {
+    min-width: 180px;
+    padding-right: 12px;
+  }
+
+  .logo-img {
+    height: 40px;
   }
   
   .company-name {
@@ -165,21 +375,39 @@
   }
   
   .slogan {
-    font-size: 0.85rem;
-    margin-left: 12px;
+    display: none;
   }
   
-  .navbar a {
-    padding: 8px 14px;
-    font-size: 0.95rem;
+  .navLink {
+    min-width: 82px;
+    padding: 0 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    display: none;
   }
 }
 
 /* 手機尺寸 (< 768px) */
 @media (max-width: 768px) {
   .header {
-    padding: 5px 10px;
+    min-height: 58px;
+    padding: 0 10px;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    align-self: center;
+    min-width: auto;
+    padding-right: 0;
+  }
+
+  .logo::after {
+    display: none;
   }
   
   .logo-img {
@@ -194,19 +422,25 @@
     display: none; /* 手機版隱藏 slogan */
   }
   
-  /* 手機版隱藏導覽列 */
-  .navbar {
-    display: none;
-  }
-  
   .language-switcher {
     margin-right: 0;
   }
-  
-  .language-select {
-    font-size: 0.85rem;
-    padding: 6px 10px;
-    min-width: 90px;
+
+  .languageButton {
+    min-width: 96px;
+    min-height: 38px;
+    gap: 8px;
+    padding: 0 10px;
+    font-size: 0.86rem;
+  }
+
+  .languageIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .languageMenu {
+    width: 132px;
   }
 }
 
@@ -221,9 +455,10 @@
     font-size: 14px;
   }
   
-  .language-select {
+  .languageButton {
     font-size: 0.8rem;
-    padding: 5px 8px;
-    min-width: 80px;
+    min-width: 88px;
+    min-height: 36px;
+    padding: 0 8px;
   }
 }

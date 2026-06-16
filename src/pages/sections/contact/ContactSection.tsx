@@ -111,6 +111,7 @@ export default function ContactSection() {
         <div className={styles.contactContent}>
           {/* 左側：公司聯絡資訊 */}
           <motion.div 
+            id="contact-info"
             className={styles.contactInfo}
             initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -183,6 +184,7 @@ export default function ContactSection() {
 
           {/* 右側：客戶填寫表單 */}
           <motion.form 
+            id="contact-form"
             className={styles.contactForm} 
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: isMobile ? 0 : 30 }}

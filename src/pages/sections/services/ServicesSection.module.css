@@ -1,134 +1,350 @@
-/* Services Section */
 .servicesSection {
-  min-height: 100vh;
-  padding: 80px 20px;
-  background: linear-gradient(180deg, #6a9cb5 0%, #6fd8e3 100%);
+  position: relative;
+  scroll-margin-top: 72px;
+  padding: clamp(78px, 9vw, 118px) 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 9% 12%, rgba(58, 183, 255, 0.36), transparent 28%),
+    radial-gradient(circle at 84% 16%, rgba(45, 113, 255, 0.22), transparent 30%),
+    radial-gradient(circle at 54% 110%, rgba(47, 210, 207, 0.1), transparent 34%),
+    linear-gradient(180deg, #061015 0%, #081725 50%, #061016 100%);
+  color: #edf8f6;
 }
 
-.servicesHeader {
-  text-align: center;
-  margin-bottom: 60px;
+.techGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(105, 198, 255, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(105, 198, 255, 0.075) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 92%);
+  pointer-events: none;
 }
 
-.servicesTitle {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.servicesSection::before,
+.servicesSection::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(92, 196, 255, 0.56), transparent);
 }
 
-.servicesHeader p {
-  font-size: 1.25rem;
-  color: #f0f8ff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+.servicesSection::before {
+  top: 96px;
+  left: 8%;
+  width: 320px;
+  transform: rotate(28deg);
 }
 
-.servicesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+.servicesSection::after {
+  right: 7%;
+  bottom: 130px;
+  width: 360px;
+  transform: rotate(-34deg);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
-.serviceCard {
-  background: #fff;
-  border-radius: 16px;
-  padding: 40px 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
+.serviceLayout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.42fr) minmax(0, 0.58fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: start;
+}
+
+.serviceIntro {
+  position: sticky;
+  top: 92px;
   min-width: 0;
 }
 
-.serviceCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+.eyebrow {
+  display: inline-flex;
+  color: #7bdcff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.serviceIcon {
-  font-size: 3rem;
+.titleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 66px;
+  gap: 18px;
+  align-items: center;
+  margin-top: 12px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(91, 192, 255, 0.36);
+}
+
+.titleRow h1 {
+  color: #f6fbff;
+  font-size: clamp(2.45rem, 4.8vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.roundButton {
+  display: inline-grid;
+  width: 66px;
+  height: 66px;
+  place-items: center;
+  border: 2px solid rgba(127, 220, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(6, 17, 30, 0.7);
+  color: #f6fbff;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(66, 183, 255, 0.16);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.roundButton:hover {
+  transform: translateY(-2px);
+  border-color: #42b7ff;
+  box-shadow: 0 0 34px rgba(66, 183, 255, 0.28);
+}
+
+.serviceIntro p {
+  margin-top: 22px;
+  color: rgba(224, 244, 250, 0.76);
+  font-size: clamp(1.08rem, 2vw, 1.34rem);
+  line-height: 1.65;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.tagRow span {
+  border: 1px solid rgba(142, 232, 255, 0.24);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(66, 183, 255, 0.08);
+  color: #8ee8ff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 0.96rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primaryButton {
+  border: 1px solid rgba(91, 192, 255, 0.5);
+  background: transparent;
+  color: #8ee8ff;
+  box-shadow: inset 0 0 0 1px rgba(47, 210, 207, 0.12);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(91, 192, 255, 0.48);
+  background: linear-gradient(135deg, #42b7ff, #2fd2cf);
+  color: #03111e;
+  box-shadow: 0 14px 30px rgba(66, 183, 255, 0.22);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.serviceMenu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 30px) 34px;
+}
+
+.serviceItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 24px;
+  gap: 14px;
+  align-items: start;
+  min-height: 126px;
+  border: 0;
+  border-bottom: 1px solid rgba(91, 192, 255, 0.28);
+  padding: 4px 0 20px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.serviceItem::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, #42b7ff, #2fd2cf);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s ease;
+}
+
+.serviceItem:hover::after {
+  transform: scaleX(1);
+}
+
+.itemIcon {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(91, 192, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(66, 183, 255, 0.1);
+  color: #8ee8ff;
+}
+
+.itemText {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.itemText strong {
+  color: #8ee8ff;
+  font-size: clamp(1.16rem, 2vw, 1.48rem);
+  line-height: 1.25;
+}
+
+.itemText span {
+  color: rgba(224, 244, 250, 0.66);
+  line-height: 1.55;
+}
+
+.itemArrow {
+  color: #2fd2cf;
+  transition: transform 0.2s ease;
+}
+
+.serviceItem:hover .itemArrow {
+  transform: translate(3px, -3px);
+}
+
+.deliveryBand {
+  margin-top: 76px;
+  border: 1px solid rgba(91, 192, 255, 0.22);
+  border-radius: 8px;
+  padding: 26px;
+  background:
+    linear-gradient(135deg, rgba(66, 183, 255, 0.14), rgba(47, 210, 207, 0.08)),
+    rgba(8, 20, 34, 0.92);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.bandHeader {
+  display: flex;
+  gap: 14px;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.serviceCard h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
+.bandHeader svg {
+  color: #8ee8ff;
 }
 
-.serviceCard p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
+.bandHeader h2 {
+  margin-top: 5px;
+  color: #f6fbff;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .servicesTitle {
-    font-size: 2rem;
-  }
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
 
-  .servicesHeader p {
-    font-size: 1rem;
-  }
+.stepCard {
+  border: 1px solid rgba(91, 192, 255, 0.16);
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.035);
+}
 
-  .servicesGrid {
+.stepCard span {
+  color: #7bdcff;
+  font-weight: 900;
+}
+
+.stepCard strong {
+  display: block;
+  margin-top: 10px;
+  color: #f6fbff;
+  font-size: 1.05rem;
+}
+
+.stepCard p {
+  margin-top: 8px;
+  color: rgba(224, 244, 250, 0.66);
+  line-height: 1.58;
+}
+
+@media (max-width: 1080px) {
+  .serviceLayout {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .serviceCard {
-    padding: 30px 20px;
-  }
-
-  .serviceCard h3 {
-    font-size: 1.25rem;
-  }
-
-  .serviceCard p {
-    font-size: 0.95rem;
-  }
-
-  .servicesSection {
-    padding: 60px 15px;
+  .serviceIntro {
+    position: relative;
+    top: auto;
   }
 }
 
-/* 小螢幕優化 (iPhone SE 等) */
-@media (max-width: 480px) {
+@media (max-width: 820px) {
+  .serviceMenu,
+  .stepGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
   .servicesSection {
-    padding: 40px 10px;
+    padding: 64px 14px;
   }
 
-  .servicesHeader {
-    margin-bottom: 40px;
+  .titleRow {
+    grid-template-columns: 1fr;
   }
 
-  .servicesTitle {
-    font-size: 1.75rem;
+  .roundButton,
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
   }
 
-  .servicesGrid {
-    grid-template-columns: 1fr !important;
-    gap: 15px;
-  }
-
-  .serviceCard {
-    padding: 25px 15px;
-  }
-
-  .serviceIcon {
-    font-size: 2.5rem;
-  }
-
-  .serviceCard h3 {
-    font-size: 1.15rem;
-  }
-
-  .serviceCard p {
-    font-size: 0.9rem;
+  .serviceItem {
+    grid-template-columns: 38px minmax(0, 1fr) 22px;
   }
 }
