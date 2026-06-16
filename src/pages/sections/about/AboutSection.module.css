@@ -666,15 +666,41 @@
 
 @media (max-width: 760px) {
   .aboutSection {
-    padding: 64px 14px;
+    min-height: auto;
+    padding: 34px 14px;
+  }
+
+  .heroGrid {
+    border-radius: 18px;
+    padding-bottom: 18px;
+  }
+
+  .heroCopy {
+    padding: 28px 18px 0;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(1.9rem, 9vw, 2.75rem);
+  }
+
+  .heroCopy p {
+    margin-top: 12px;
+    font-size: 0.96rem;
+    line-height: 1.65;
   }
 
   .unitGrid {
     grid-template-columns: 1fr;
   }
 
+  .loomPanel {
+    width: calc(100% - 24px);
+    min-height: 230px;
+    margin-top: 16px;
+  }
+
   .loomGraph {
-    min-height: 460px;
+    min-height: 230px;
   }
 
   .heroCopy h1 span {
@@ -684,27 +710,118 @@
   .softwareNode,
   .gameNode,
   .coreNode {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    margin: 0 auto 18px;
-    transform: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .softwareNode,
   .gameNode {
-    width: min(100%, 330px);
+    width: 104px;
+    min-height: 104px;
+    border-radius: 14px;
+  }
+
+  .softwareNode {
+    left: 0;
+  }
+
+  .gameNode {
+    right: 0;
+  }
+
+  .coreNode {
+    left: 50%;
+    width: 88px;
+    height: 88px;
+    transform: translate(-50%, -50%);
+  }
+
+  .coreNode strong {
+    display: none;
+  }
+
+  .shuttleCore::before {
+    width: 58px;
+    height: 20px;
+  }
+
+  .dashboardMini {
+    width: 82%;
+    padding: 8px;
+  }
+
+  .dashboardTop {
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+
+  .dashboardTop span {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dashboardTop strong {
+    font-size: 0.68rem;
+  }
+
+  .dashboardGrid {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .dashboardGrid i,
+  .dashboardGrid i:first-child {
+    min-height: 22px;
+  }
+
+  .gameSigil {
+    width: 82%;
+    min-height: 78px;
+  }
+
+  .gameSigil span {
+    display: none;
   }
 
   .softwareThread,
   .gameThread {
-    display: none;
+    display: block;
+    top: 50%;
   }
 
-  .loomCaption {
-    align-items: flex-start;
-    flex-direction: column;
+  .softwareThread {
+    left: 104px;
+    right: 50%;
+  }
+
+  .gameThread {
+    left: 50%;
+    right: 104px;
+  }
+
+  .introDock {
+    gap: 10px;
+    width: calc(100% - 24px);
+    margin-top: 12px;
+  }
+
+  .introCard {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .introCard p {
+    max-height: none;
+    margin-top: 8px;
+    opacity: 1;
+  }
+
+  .missionSection,
+  .unitSection,
+  .organizationSection,
+  .promiseBand {
+    margin-top: 36px;
   }
 
   .unitCard {

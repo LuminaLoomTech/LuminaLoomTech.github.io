@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
   Activity,
   ArrowRight,
@@ -17,6 +17,7 @@ import bannerBgImage from '../../../assets/images/BANNER-final.webp';
 export default function HomeSection() {
   const { t } = useTranslation();
   const [showParticle, setShowParticle] = useState(false);
+  const [activeFlow, setActiveFlow] = useState(0);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -44,6 +45,24 @@ export default function HomeSection() {
 
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  const flowSteps = [
+    {
+      icon: Workflow,
+      title: t('home.process1'),
+      description: t('home.process1Desc'),
+    },
+    {
+      icon: Play,
+      title: t('home.process2'),
+      description: t('home.process2Desc'),
+    },
+    {
+      icon: MessageSquareMore,
+      title: t('home.process3'),
+      description: t('home.process3Desc'),
+    },
+  ];
 
   return (
     <section id="home" className={styles.homeSection}>
@@ -133,20 +152,29 @@ export default function HomeSection() {
                   </div>
 
                   <div className={styles.flowPreview}>
-                    <div className={styles.flowNode}>
-                      <Workflow size={18} />
-                      <span>{t('home.process1')}</span>
-                    </div>
-                    <div className={styles.flowLine} aria-hidden="true" />
-                    <div className={styles.flowNode}>
-                      <Play size={18} />
-                      <span>{t('home.process2')}</span>
-                    </div>
-                    <div className={styles.flowLine} aria-hidden="true" />
-                    <div className={styles.flowNode}>
-                      <MessageSquareMore size={18} />
-                      <span>{t('home.process3')}</span>
-                    </div>
+                    {flowSteps.map((step, index) => {
+                      const Icon = step.icon;
+
+                      return (
+                        <Fragment key={step.title}>
+                          {index > 0 && <div className={styles.flowLine} aria-hidden="true" />}
+                          <button
+                            type="button"
+                            className={`${styles.flowNode} ${activeFlow === index ? styles.flowNodeActive : ''}`}
+                            onClick={() => setActiveFlow(index)}
+                            aria-pressed={activeFlow === index}
+                          >
+                            <Icon size={18} />
+                            <span>{step.title}</span>
+                          </button>
+                        </Fragment>
+                      );
+                    })}
+                  </div>
+                  <div className={styles.flowDetail} aria-live="polite">
+                    <span>0{activeFlow + 1}</span>
+                    <strong>{flowSteps[activeFlow].title}</strong>
+                    <p>{flowSteps[activeFlow].description}</p>
                   </div>
                 </div>
               </div>

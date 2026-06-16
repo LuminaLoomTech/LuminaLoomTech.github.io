@@ -119,7 +119,25 @@
 
 @media (max-width: 640px) {
   .gameSection {
-    padding: 62px 14px;
+    padding: 38px 14px;
+  }
+
+  .copy h2 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .copy p {
+    margin-top: 12px;
+    line-height: 1.65;
+  }
+
+  .signalGrid {
+    gap: 10px;
+  }
+
+  .signalCard {
+    min-height: auto;
+    padding: 16px;
   }
 
   .ctaButton {

@@ -429,15 +429,67 @@
   text-align: center;
   font-size: 0.88rem;
   font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .flowNode svg {
   color: #7be7ff;
 }
 
+.flowNode:hover,
+.flowNode:focus-visible,
+.flowNodeActive {
+  outline: none;
+  transform: translateY(-2px);
+  border-color: rgba(123, 231, 255, 0.48);
+  background:
+    linear-gradient(180deg, rgba(123, 231, 255, 0.12), rgba(9, 22, 34, 0.76));
+  box-shadow: 0 14px 28px rgba(57, 183, 255, 0.14);
+}
+
+.flowNodeActive svg {
+  color: #ffffff;
+}
+
 .flowLine {
   height: 1px;
   background: linear-gradient(90deg, rgba(123, 231, 255, 0.15), rgba(123, 231, 255, 0.72), rgba(123, 231, 255, 0.15));
+}
+
+.flowDetail {
+  margin-top: 14px;
+  border: 1px solid rgba(126, 231, 255, 0.14);
+  border-radius: 18px;
+  padding: 16px 18px;
+  background:
+    linear-gradient(135deg, rgba(123, 231, 255, 0.08), rgba(47, 210, 207, 0.025)),
+    rgba(5, 13, 22, 0.54);
+}
+
+.flowDetail span {
+  color: #7be7ff;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.flowDetail strong {
+  display: block;
+  margin-top: 7px;
+  color: #ffffff;
+  font-size: 1.02rem;
+}
+
+.flowDetail p {
+  margin-top: 7px;
+  color: #94a3b8;
+  line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 1080px) {
