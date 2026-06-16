@@ -670,6 +670,19 @@
     padding: 34px 14px;
   }
 
+  .aboutSection,
+  .heroCopy,
+  .loomPanel,
+  .sectionHeader,
+  .infoCard,
+  .unitCard,
+  .orgIntro,
+  .departmentCard,
+  .promiseBand {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .heroGrid {
     border-radius: 18px;
     padding-bottom: 18px;

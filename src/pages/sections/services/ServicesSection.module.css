@@ -327,6 +327,16 @@
   .stepGrid {
     grid-template-columns: 1fr;
   }
+
+  .servicesSection,
+  .serviceIntro,
+  .serviceMenu,
+  .serviceItem,
+  .deliveryBand,
+  .stepCard {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @media (max-width: 640px) {

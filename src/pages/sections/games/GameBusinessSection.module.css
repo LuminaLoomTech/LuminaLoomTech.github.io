@@ -122,6 +122,13 @@
     padding: 38px 14px;
   }
 
+  .gameSection,
+  .copy,
+  .signalCard {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .copy h2 {
     font-size: clamp(2rem, 12vw, 3rem);
   }
